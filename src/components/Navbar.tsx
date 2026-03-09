@@ -1,67 +1,55 @@
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
+import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-
-const navItems = ["Capabilities", "Insights", "Methodology", "Contact"];
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 100);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border">
-      <div className="editorial-container">
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
+        scrolled ? "bg-background/95 backdrop-blur-sm border-b border-border" : "bg-transparent"
+      }`}
+    >
+      <div className="cinematic-container">
         <div className="flex h-16 items-center justify-between">
-          {/* Logo */}
-          <a href="/" className="flex items-center gap-3">
-            <div className="h-2 w-2 rounded-full bg-primary animate-pulse-dot" />
-            <span className="font-mono text-xs font-medium uppercase tracking-[0.2em] text-foreground">
-              Apex Advisory
-            </span>
+          <a href="/" className="font-mono-data text-[10px] uppercase tracking-[0.3em] text-foreground">
+            Apex Advisory
           </a>
 
-          {/* Nav links */}
-          <div className="hidden lg:flex items-center gap-8">
-            {navItems.map((item) => (
-              <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
-                className="font-mono text-[10px] font-medium uppercase tracking-[0.2em] text-muted-foreground hover:text-primary transition-colors duration-300"
-              >
-                {item}
-              </a>
-            ))}
-          </div>
-
-          {/* CTA */}
-          <div className="hidden lg:block">
-            <Button variant="command" size="sm">
-              Engage
-            </Button>
-          </div>
+          <a
+            href="mailto:hello@apexadvisory.com"
+            className="hidden md:block font-mono-data text-[10px] uppercase tracking-[0.2em] text-muted-foreground hover:text-foreground transition-colors duration-300"
+          >
+            hello@apexadvisory.com
+          </a>
 
           <button
-            className="lg:hidden text-foreground"
+            className="md:hidden text-foreground"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle menu"
           >
-            {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            {mobileOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
           </button>
         </div>
       </div>
 
       {mobileOpen && (
-        <div className="lg:hidden bg-background border-b border-border">
-          <div className="editorial-container py-6 flex flex-col gap-5">
-            {navItems.map((item) => (
-              <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
-                onClick={() => setMobileOpen(false)}
-                className="font-mono text-[11px] font-medium uppercase tracking-[0.15em] text-muted-foreground hover:text-primary transition-colors"
-              >
-                {item}
-              </a>
-            ))}
+        <div className="md:hidden bg-background border-b border-border">
+          <div className="cinematic-container py-6">
+            <a
+              href="mailto:hello@apexadvisory.com"
+              className="font-mono-data text-[10px] uppercase tracking-[0.2em] text-muted-foreground"
+              onClick={() => setMobileOpen(false)}
+            >
+              hello@apexadvisory.com
+            </a>
           </div>
         </div>
       )}

@@ -1,9 +1,9 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
-import ExplodedEngineering from "@/components/ExplodedEngineering";
-import ExpertiseSection from "@/components/ExpertiseSection";
-import ApproachSection from "@/components/ApproachSection";
-import InsightsSection from "@/components/InsightsSection";
+import DescentSection from "@/components/DescentSection";
+import RevealSection from "@/components/RevealSection";
+import CasesSection from "@/components/CasesSection";
+import TeamSection from "@/components/TeamSection";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 
@@ -12,10 +12,10 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
       <HeroSection />
-      <ExplodedEngineering />
-      <ExpertiseSection />
-      <ApproachSection />
-      <InsightsSection />
+      <DescentSection />
+      <RevealSection />
+      <CasesSection />
+      <TeamSection />
       <CTASection />
       <Footer />
     </div>
