@@ -26,7 +26,7 @@ const StealthOverlay = () => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: -10 }}
             transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
-            className="relative z-10 pointer-events-auto max-w-md w-[90%] border border-accent/30 bg-card/95 backdrop-blur-xl shadow-2xl"
+            className="relative z-10 max-w-md w-[90%] border border-accent/30 bg-card/95 backdrop-blur-xl shadow-2xl"
           >
             {/* Top accent line */}
             <div className="h-px w-full bg-gradient-to-r from-transparent via-accent to-transparent" />
