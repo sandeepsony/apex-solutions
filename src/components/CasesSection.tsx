@@ -166,9 +166,35 @@ const cases = [
       { value: "12m", label: "Precision located" },
     ],
   },
+  {
+    title: "Wastewater Treatment",
+    shortTitle: "Wastewater",
+    headline: "A treatment plant was failing compliance.",
+    subline: "The chemistry said it shouldn't.",
+    question: "Why was a wastewater plant consistently breaching discharge limits?",
+    summary:
+      "A municipal-industrial wastewater treatment facility serving 200,000 people was intermittently exceeding phosphorus and ammonia discharge limits despite operating within design parameters. Regulators issued a 6-month compliance notice with $15M in potential fines.",
+    investigation:
+      "We deployed a combination of real-time effluent chemistry monitoring, hydraulic flow modeling, and microbial community DNA sequencing across all treatment stages. Our team built a first-principles biochemical model calibrated against 2 years of lab data.",
+    findings: [
+      "Intermittent industrial discharges from an upstream chemical plant were shocking the nitrifying bacteria population",
+      "Hydraulic short-circuiting in the secondary clarifier reduced effective retention time by 35%",
+      "Phosphorus removal was undermined by ferric dosing at the wrong pH — a 0.4 pH unit error in the control setpoint",
+      "The combination of biological and chemical failures only manifested during peak flow events, masking the root causes during routine sampling",
+    ],
+    outcome: "Achieved full regulatory compliance within 8 weeks. Control system recalibration and clarifier baffle modification cost $340K — avoiding $15M in fines and a $60M plant upgrade.",
+    disciplines: ["Environmental Engineering", "Biochemistry", "Hydraulic Modeling", "Process Control"],
+    image: caseWastewater,
+    color: "hsl(180, 60%, 45%)",
+    stats: [
+      { value: "$15M", label: "Fines avoided" },
+      { value: "8wk", label: "To compliance" },
+      { value: "$340K", label: "Fix cost" },
+    ],
+  },
 ];
 
-const SEGMENT_COUNT = 6;
+const SEGMENT_COUNT = 7;
 const RADIUS = 200;
 const CENTER = 240;
 const INNER_RADIUS = 75;
