@@ -293,8 +293,8 @@ const CasesSection = () => {
         <div className="label-mono mb-4">Case Studies</div>
         <div className="divider-line mb-6" />
         <h1 className="font-heading text-4xl md:text-6xl font-medium text-foreground max-w-3xl leading-[1.1]">
-          Six investigations.{" "}
-          <span className="italic text-accent">Six engineering puzzles solved.</span>
+          Seven investigations.{" "}
+          <span className="italic text-accent">Seven engineering puzzles solved.</span>
         </h1>
         <p className="font-body text-sm text-muted-foreground mt-4 max-w-lg">
           Each segment represents one of our landmark case studies. Click to dive deep into the investigation.
