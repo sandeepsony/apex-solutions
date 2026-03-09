@@ -1,11 +1,15 @@
 import { motion } from "framer-motion";
 import { ArrowDown, ArrowRight } from "lucide-react";
-import heroPlatform from "@/assets/hero-platform.jpg";
-import logoGold from "@/assets/logo-compass-gold.png";
-import wordmark from "@/assets/wordmark-tech-6.png";
 import { Link } from "react-router-dom";
+import { useTheme } from "@/hooks/useTimeTheme";
+import heroPlatform from "@/assets/hero-platform.jpg";
+import wordmarkDark from "@/assets/wordmark-final-2.png";
+import wordmarkLight from "@/assets/wordmark-light-mode.png";
 
 const HeroSection = () => {
+  const { theme } = useTheme();
+  const wordmark = theme === "dark" ? wordmarkDark : wordmarkLight;
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background */}
@@ -16,14 +20,14 @@ const HeroSection = () => {
       </div>
 
       <div className="cinematic-container relative z-10 text-center">
-        {/* Big NOVA ACTA wordmark */}
+        {/* Big wordmark */}
         <motion.div
           initial={{ opacity: 0, scale: 0.7 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.8, ease: "easeOut" }}
           className="flex justify-center mb-12"
         >
-          <img src={wordmark} alt="NOVA·ACTA" className="h-14 sm:h-20 md:h-28 lg:h-36 object-contain" />
+          <img src={wordmark} alt="NOVA | ACTA" className="h-14 sm:h-20 md:h-28 lg:h-36 object-contain" />
         </motion.div>
 
         {/* Tagline */}
@@ -54,8 +58,8 @@ const HeroSection = () => {
           transition={{ duration: 1.5, delay: 1.8 }}
           className="font-body text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mb-14 leading-relaxed"
         >
-          14 PhDs across 8 engineering disciplines. We combine deep domain expertise 
-          with advanced data science to uncover failures, optimize performance, and 
+          14 PhDs across 8 engineering disciplines. We combine deep domain expertise
+          with advanced data science to uncover failures, optimize performance, and
           prevent catastrophic events — before they happen.
         </motion.p>
 

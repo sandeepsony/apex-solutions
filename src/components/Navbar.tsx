@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Sun, Moon } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
+import { useTheme } from "@/hooks/useTimeTheme";
 import logoGold from "@/assets/logo-compass-gold.png";
-import wordmark from "@/assets/wordmark-tech-6.png";
 
 const navLinks = [
   { label: "Home", path: "/" },
@@ -12,6 +12,7 @@ const navLinks = [
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { isDaytime } = useTheme();
   const location = useLocation();
 
   useEffect(() => {
@@ -28,12 +29,10 @@ const Navbar = () => {
     >
       <div className="cinematic-container">
         <div className="flex h-20 items-center justify-between">
-          {/* Logo */}
           <Link to="/" className="flex items-center">
             <img src={logoGold} alt="NovaActa" className="w-10 h-10 md:w-11 md:h-11 object-contain" />
           </Link>
 
-          {/* Desktop nav */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <Link
@@ -55,9 +54,15 @@ const Navbar = () => {
             >
               Contact
             </a>
+            <div className="w-px h-4 bg-border" />
+            <div className="flex items-center gap-1.5 text-muted-foreground">
+              {isDaytime ? <Sun className="w-3.5 h-3.5 text-accent" /> : <Moon className="w-3.5 h-3.5 text-accent" />}
+              <span className="font-mono-data text-[8px] uppercase tracking-[0.15em]">
+                {isDaytime ? "Day" : "Night"}
+              </span>
+            </div>
           </div>
 
-          {/* Mobile toggle */}
           <button
             className="md:hidden text-foreground"
             onClick={() => setMobileOpen(!mobileOpen)}
