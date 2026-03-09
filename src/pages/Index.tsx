@@ -6,10 +6,12 @@ import StatsSection from "@/components/StatsSection";
 import TeamSection from "@/components/TeamSection";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
+import StealthOverlay from "@/components/StealthOverlay";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
+      <StealthOverlay />
       <Navbar />
       <HeroSection />
       <AboutSection />
