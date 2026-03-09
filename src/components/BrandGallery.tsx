@@ -11,6 +11,12 @@ import wordmark9 from "@/assets/wordmark-9.png";
 import wordmark10 from "@/assets/wordmark-10.png";
 import wordmark11 from "@/assets/wordmark-11.png";
 import wordmark12 from "@/assets/wordmark-12.png";
+import wordmarkTech1 from "@/assets/wordmark-tech-1.png";
+import wordmarkTech2 from "@/assets/wordmark-tech-2.png";
+import wordmarkTech3 from "@/assets/wordmark-tech-3.png";
+import wordmarkTech4 from "@/assets/wordmark-tech-4.png";
+import wordmarkTech5 from "@/assets/wordmark-tech-5.png";
+import wordmarkTech6 from "@/assets/wordmark-tech-6.png";
 
 const wordmarks = [
   { id: 1, src: wordmark1, name: "1", desc: "Thin elegant serif" },
@@ -25,6 +31,15 @@ const wordmarks = [
   { id: 10, src: wordmark10, name: "10", desc: "Art deco ornate" },
   { id: 11, src: wordmark11, name: "11", desc: "Sci-fi glowing" },
   { id: 12, src: wordmark12, name: "12", desc: "Lowercase friendly" },
+];
+
+const techWordmarks = [
+  { id: "T1", src: wordmarkTech1, name: "T1", desc: "Circuit board traces" },
+  { id: "T2", src: wordmarkTech2, name: "T2", desc: "Hexagonal grid overlay" },
+  { id: "T3", src: wordmarkTech3, name: "T3", desc: "Mechanical gears" },
+  { id: "T4", src: wordmarkTech4, name: "T4", desc: "Data stream lines" },
+  { id: "T5", src: wordmarkTech5, name: "T5", desc: "Blueprint markers" },
+  { id: "T6", src: wordmarkTech6, name: "T6", desc: "Geometric frame" },
 ];
 
 const BrandGallery = () => {
@@ -58,8 +73,41 @@ const BrandGallery = () => {
           </p>
         </div>
 
-        {/* Wordmark Options */}
-        <div className="label-mono mb-4">Choose Your Wordmark (1-12)</div>
+        {/* Technical Monospace Section - White & Gold */}
+        <div className="label-mono mb-4 text-accent">Technical Monospace Collection — White & Gold</div>
+        <div className="divider-line mb-8" />
+        
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-16">
+          {techWordmarks.map((wm) => (
+            <div
+              key={wm.id}
+              className="bg-card border border-accent/30 group hover:border-accent transition-all duration-500 overflow-hidden shadow-lg"
+            >
+              {/* Wordmark display */}
+              <div className="aspect-[2/1] flex items-center justify-center p-4 bg-black">
+                <img
+                  src={wm.src}
+                  alt={`Technical Wordmark ${wm.name}`}
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              {/* Info */}
+              <div className="p-4 border-t border-accent/30 bg-gradient-to-br from-background to-accent/5">
+                <div className="flex items-center justify-between">
+                  <span className="font-mono-data text-lg font-bold text-accent">
+                    #{wm.name}
+                  </span>
+                  <span className="font-body text-xs text-muted-foreground">
+                    {wm.desc}
+                  </span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Original Wordmark Options */}
+        <div className="label-mono mb-4">Other Wordmark Styles (1-12)</div>
         <div className="divider-line mb-12" />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -93,10 +141,10 @@ const BrandGallery = () => {
 
         <div className="mt-16 text-center border-t border-border pt-12">
           <p className="font-heading text-2xl text-foreground mb-2">
-            Which wordmark do you like?
+            Which technical wordmark do you like?
           </p>
           <p className="font-body text-sm text-muted-foreground">
-            Just tell me the number (1-12) and I'll pair it with your gold compass
+            Tell me T1-T6 for technical monospace, or 1-12 for other styles
           </p>
         </div>
       </div>
