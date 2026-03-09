@@ -20,14 +20,14 @@ const Navbar = () => {
       <div className="cinematic-container">
         <div className="flex h-16 items-center justify-between">
           <a href="/" className="font-mono-data text-[10px] uppercase tracking-[0.3em] text-foreground">
-            Apex Advisory
+            NovaActa
           </a>
 
           <a
-            href="mailto:hello@apexadvisory.com"
+            href="mailto:hello@novaacta.com"
             className="hidden md:block font-mono-data text-[10px] uppercase tracking-[0.2em] text-muted-foreground hover:text-foreground transition-colors duration-300"
           >
-            hello@apexadvisory.com
+            hello@novaacta.com
           </a>
 
           <button
@@ -44,11 +44,11 @@ const Navbar = () => {
         <div className="md:hidden bg-background border-b border-border">
           <div className="cinematic-container py-6">
             <a
-              href="mailto:hello@apexadvisory.com"
+              href="mailto:hello@novaacta.com"
               className="font-mono-data text-[10px] uppercase tracking-[0.2em] text-muted-foreground"
               onClick={() => setMobileOpen(false)}
             >
-              hello@apexadvisory.com
+              hello@novaacta.com
             </a>
           </div>
         </div>

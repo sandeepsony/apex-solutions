@@ -1,12 +1,21 @@
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
+import heroPlatform from "@/assets/hero-platform.jpg";
 
 const HeroSection = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Subtle vignette */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
-      
+      {/* Background image with overlay */}
+      <div className="absolute inset-0">
+        <img
+          src={heroPlatform}
+          alt="Offshore platform at night"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-background/80" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/40" />
+      </div>
+
       <div className="cinematic-container relative z-10 text-center">
         <motion.div
           initial={{ opacity: 0 }}
