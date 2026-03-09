@@ -1,19 +1,14 @@
 import { Link } from "react-router-dom";
-import { useTheme } from "@/hooks/useTimeTheme";
 import logoGold from "@/assets/logo-compass-gold.png";
-import wordmarkDark from "@/assets/wordmark-final-2.png";
-import wordmarkLight from "@/assets/wordmark-light-mode.png";
+import Wordmark from "@/components/Wordmark";
 
 const Footer = () => {
-  const { theme } = useTheme();
-  const wordmark = theme === "dark" ? wordmarkDark : wordmarkLight;
-
   return (
     <footer className="border-t border-border py-16">
       <div className="cinematic-container">
         <div className="flex flex-col items-center gap-6 mb-12">
           <img src={logoGold} alt="NovaActa" className="w-12 h-12 object-contain" />
-          <img src={wordmark} alt="NOVA | ACTA" className="h-5 object-contain" />
+          <Wordmark size="md" />
         </div>
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">

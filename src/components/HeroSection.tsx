@@ -1,18 +1,12 @@
 import { motion } from "framer-motion";
 import { ArrowDown, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useTheme } from "@/hooks/useTimeTheme";
 import heroPlatform from "@/assets/hero-platform.jpg";
-import wordmarkDark from "@/assets/wordmark-final-2.png";
-import wordmarkLight from "@/assets/wordmark-light-mode.png";
+import Wordmark from "@/components/Wordmark";
 
 const HeroSection = () => {
-  const { theme } = useTheme();
-  const wordmark = theme === "dark" ? wordmarkDark : wordmarkLight;
-
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background */}
       <div className="absolute inset-0">
         <img src={heroPlatform} alt="Offshore platform" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-background/75" />
@@ -20,17 +14,16 @@ const HeroSection = () => {
       </div>
 
       <div className="cinematic-container relative z-10 text-center">
-        {/* Big wordmark */}
+        {/* Big crisp wordmark */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.7 }}
+          initial={{ opacity: 0, scale: 0.85 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.8, ease: "easeOut" }}
           className="flex justify-center mb-12"
         >
-          <img src={wordmark} alt="NOVA | ACTA" className="h-14 sm:h-20 md:h-28 lg:h-36 object-contain" />
+          <Wordmark size="hero" />
         </motion.div>
 
-        {/* Tagline */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -40,7 +33,6 @@ const HeroSection = () => {
           Engineering Intelligence
         </motion.div>
 
-        {/* Main headline */}
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -51,7 +43,6 @@ const HeroSection = () => {
           <span className="italic text-accent">nobody else can.</span>
         </motion.h1>
 
-        {/* Sub-headline */}
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -63,7 +54,6 @@ const HeroSection = () => {
           prevent catastrophic events — before they happen.
         </motion.p>
 
-        {/* CTAs */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -85,7 +75,6 @@ const HeroSection = () => {
           </a>
         </motion.div>
 
-        {/* Scroll indicator */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
