@@ -33,6 +33,15 @@ const wordmarks = [
   { id: 12, src: wordmark12, name: "12", desc: "Lowercase friendly" },
 ];
 
+const techWordmarks = [
+  { id: "T1", src: wordmarkTech1, name: "T1", desc: "Circuit board traces" },
+  { id: "T2", src: wordmarkTech2, name: "T2", desc: "Hexagonal grid overlay" },
+  { id: "T3", src: wordmarkTech3, name: "T3", desc: "Mechanical gears" },
+  { id: "T4", src: wordmarkTech4, name: "T4", desc: "Data stream lines" },
+  { id: "T5", src: wordmarkTech5, name: "T5", desc: "Blueprint markers" },
+  { id: "T6", src: wordmarkTech6, name: "T6", desc: "Geometric frame" },
+];
+
 const BrandGallery = () => {
   return (
     <section className="min-h-screen py-16 bg-background">
