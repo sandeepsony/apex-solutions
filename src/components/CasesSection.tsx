@@ -331,7 +331,7 @@ const CasesSection = () => {
                 />
               ))}
               <text x={CENTER} y={CENTER - 8} textAnchor="middle" fill="hsl(0,0%,93%)" fontSize="16" fontFamily="'JetBrains Mono', monospace" fontWeight="500">
-                {activeCase !== null ? String(activeCase + 1).padStart(2, "0") : "06"}
+                {activeCase !== null ? String(activeCase + 1).padStart(2, "0") : "07"}
               </text>
               <text x={CENTER} y={CENTER + 12} textAnchor="middle" fill="hsl(0,0%,45%)" fontSize="9" fontFamily="'JetBrains Mono', monospace" letterSpacing="0.2em">
                 {activeCase !== null ? "ACTIVE" : "CASES"}
