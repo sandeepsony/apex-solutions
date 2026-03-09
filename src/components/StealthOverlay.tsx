@@ -59,8 +59,8 @@ const StealthOverlay = () => {
           transition={{ duration: 0.5 }}
           className="fixed inset-0 z-[100] flex items-center justify-center"
         >
-          {/* Full-screen click blocker */}
-          <div className="absolute inset-0" />
+          {/* Full-screen click blocker with dark overlay */}
+          <div className="absolute inset-0 bg-background/90 backdrop-blur-sm" />
 
           <motion.div
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
