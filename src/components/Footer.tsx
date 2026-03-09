@@ -13,7 +13,7 @@ const Footer = () => {
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <span className="font-mono-data text-[9px] uppercase tracking-[0.3em] text-muted-foreground/40">
-            © {new Date().getFullYear()} NovaActa · All rights reserved
+            © 2023 NovaActa · All rights reserved
           </span>
 
           <div className="flex gap-6">
