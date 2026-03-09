@@ -15,9 +15,15 @@ const BLOCKED_DOMAINS = [
   "rediffmail.com", "qq.com", "163.com", "126.com",
 ];
 
+const ACCESS_CODE = "NovaActa2023";
+
 const StealthOverlay = () => {
   const [dismissed, setDismissed] = useState(false);
   const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [designation, setDesignation] = useState("");
+  const [accessCode, setAccessCode] = useState("");
+  const [error, setError] = useState("");
   const [email, setEmail] = useState("");
   const [designation, setDesignation] = useState("");
   const [error, setError] = useState("");
