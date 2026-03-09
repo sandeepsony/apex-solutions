@@ -1,41 +1,47 @@
 import { ArrowUpRight } from "lucide-react";
 
+const problemStatement = {
+  title: "The Problem We Solve",
+  description:
+    "Engineering-adjacent industries — from oil & gas to construction to advanced manufacturing — generate petabytes of operational data every year. Yet most organizations lack the specialized talent to connect domain knowledge with data science. Traditional consultants understand strategy but not thermodynamics. Data scientists understand algorithms but not reservoir mechanics. We are the bridge.",
+};
+
 const capabilities = [
   {
-    title: "Engineering & Complex Systems",
+    title: "Predictive Asset Analytics",
     description:
-      "Failure analysis, systems optimization, and design assurance led by PhD engineers with deep operational experience.",
-    areas: ["Structural Integrity", "Process Safety", "Systems Engineering"],
+      "Transform sensor data, maintenance logs, and inspection records into predictive models that prevent failures and extend asset life — built by PhDs who understand the underlying physics.",
+    areas: ["Predictive Maintenance", "Remaining Useful Life", "Anomaly Detection"],
   },
   {
-    title: "Climate & Sustainability",
+    title: "Process & Operational Optimization",
     description:
-      "Rigorous climate risk quantification, carbon strategy, and ESG framework development grounded in earth science.",
-    areas: ["Carbon Accounting", "Climate Risk Modeling", "Net-Zero Strategy"],
+      "Apply advanced optimization and simulation to manufacturing, chemical, and energy processes — using your existing operational data to find efficiencies invisible to conventional analysis.",
+    areas: ["Process Simulation", "Yield Optimization", "Energy Efficiency"],
   },
   {
-    title: "Oil & Gas",
+    title: "Subsurface & Reservoir Intelligence",
     description:
-      "Subsurface modeling, reservoir optimization, and energy transition advisory from industry veterans.",
-    areas: ["Reservoir Engineering", "Asset Integrity", "Decommissioning"],
+      "Unlock value from seismic, well log, and production data with AI models built by PhD geoscientists and reservoir engineers who speak the language of the subsurface.",
+    areas: ["Reservoir Characterization", "Production Forecasting", "Well Optimization"],
   },
   {
-    title: "Advanced Manufacturing",
+    title: "Climate Risk & ESG Quantification",
     description:
-      "Industry 4.0 transformation, AI-driven quality control, and predictive maintenance at industrial scale.",
-    areas: ["Predictive Maintenance", "Digital Quality", "Process Optimization"],
+      "Move beyond qualitative ESG reporting. Our climate scientists build physics-based models that quantify portfolio-level risk from emissions, weather, and transition scenarios.",
+    areas: ["Carbon Analytics", "Physical Risk Modeling", "Transition Scenario Analysis"],
   },
   {
-    title: "BIM & Construction Technology",
+    title: "Digital Twin Development",
     description:
-      "Building information modeling, automated clash detection, and lifecycle cost analytics for major capital projects.",
-    areas: ["BIM Strategy", "Clash Detection", "4D/5D Modeling"],
+      "Build physics-informed digital replicas of your assets that fuse real-time IoT data with engineering models — enabling simulation, prediction, and autonomous decision-making.",
+    areas: ["Physics-Informed ML", "Real-Time Monitoring", "Scenario Simulation"],
   },
   {
-    title: "Digital Twins",
+    title: "BIM & Construction Intelligence",
     description:
-      "Physics-informed digital twin architectures for real-time monitoring, simulation, and autonomous operations.",
-    areas: ["IoT Integration", "Simulation Modeling", "Decision Automation"],
+      "Turn building information models and project data into actionable intelligence — from automated clash detection to lifecycle cost prediction using historical project data.",
+    areas: ["Data-Driven BIM", "Cost Prediction", "Schedule Analytics"],
   },
 ];
 
@@ -43,16 +49,23 @@ const ExpertiseSection = () => {
   return (
     <section id="capabilities" className="py-24 md:py-32 bg-secondary/50">
       <div className="editorial-container">
-        <div className="mb-16 max-w-xl">
-          <p className="label-uppercase mb-3">Capabilities</p>
-          <h2 className="font-heading text-3xl md:text-4xl font-medium text-foreground mb-5">
-            Where Science Meets Strategy
+        {/* Problem statement */}
+        <div className="mb-20 max-w-3xl">
+          <p className="label-uppercase mb-3">The Challenge</p>
+          <h2 className="font-heading text-3xl md:text-4xl font-medium text-foreground mb-6">
+            {problemStatement.title}
           </h2>
-          <p className="font-body text-base text-muted-foreground leading-relaxed">
-            We operate at the intersection of deep technical knowledge and strategic
-            advisory — deploying PhD-caliber talent to solve problems that resist
-            conventional consulting approaches.
+          <p className="font-body text-base md:text-lg text-muted-foreground leading-relaxed">
+            {problemStatement.description}
           </p>
+        </div>
+
+        {/* Capabilities heading */}
+        <div className="mb-12">
+          <p className="label-uppercase mb-3">What We Do</p>
+          <h2 className="font-heading text-3xl md:text-4xl font-medium text-foreground">
+            Turning Untapped Data Into Engineering Breakthroughs
+          </h2>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-border">

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 
-const navItems = ["Capabilities", "Industries", "Insights", "About", "Contact"];
+const navItems = ["Capabilities", "Insights", "How We Work", "Contact"];
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -19,7 +19,7 @@ const Navbar = () => {
             {navItems.map((item) => (
               <a
                 key={item}
-                href={`#${item.toLowerCase()}`}
+                href={`#${item.toLowerCase().replace(/ /g, "-")}`}
                 className="font-body text-[11px] font-medium uppercase tracking-[0.15em] text-muted-foreground hover:text-foreground transition-colors duration-300"
               >
                 {item}
@@ -43,14 +43,13 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile menu */}
       {mobileOpen && (
         <div className="lg:hidden bg-background border-b border-border">
           <div className="editorial-container py-8 flex flex-col gap-6">
             {navItems.map((item) => (
               <a
                 key={item}
-                href={`#${item.toLowerCase()}`}
+                href={`#${item.toLowerCase().replace(/ /g, "-")}`}
                 onClick={() => setMobileOpen(false)}
                 className="font-body text-sm font-medium uppercase tracking-[0.1em] text-muted-foreground hover:text-foreground transition-colors"
               >
