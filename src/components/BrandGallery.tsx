@@ -35,11 +35,14 @@ const BrandGallery = () => {
         <div className="mb-24">
           <div className="label-mono mb-4 text-center">Your Logo Mark — Now Bigger & Bolder</div>
           <div className="divider-line mx-auto mb-12" />
-          
+
           <div className="flex justify-center">
             <div className="relative">
               {/* Glow effect behind */}
-              <div className="absolute inset-0 bg-gradient-radial from-amber-500/20 via-transparent to-transparent blur-3xl scale-150" />
+              <div
+                className="absolute inset-0 blur-3xl scale-150"
+                style={{ background: "radial-gradient(circle, hsl(var(--accent) / 0.3) 0%, transparent 70%)" }}
+              />
               <img
                 src={logoGold}
                 alt="NovaActa Gold Compass"
@@ -66,7 +69,7 @@ const BrandGallery = () => {
               className="bg-card border border-border group hover:border-accent/50 transition-all duration-500 overflow-hidden"
             >
               {/* Wordmark display */}
-              <div className="aspect-[2/1] flex items-center justify-center p-4 bg-black">
+              <div className="aspect-[2/1] flex items-center justify-center p-4 bg-background">
                 <img
                   src={wm.src}
                   alt={`Wordmark ${wm.name}`}
