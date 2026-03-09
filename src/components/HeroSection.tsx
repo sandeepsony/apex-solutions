@@ -16,30 +16,21 @@ const HeroSection = () => {
       </div>
 
       <div className="cinematic-container relative z-10 text-center">
-        {/* Gold compass logo with glow */}
+        {/* Gold compass + wordmark side by side */}
         <motion.div
           initial={{ opacity: 0, scale: 0.7 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.8, ease: "easeOut" }}
-          className="flex justify-center mb-8"
+          className="flex items-center justify-center gap-5 md:gap-8 mb-12"
         >
           <div className="relative">
             <div
               className="absolute inset-0 blur-3xl scale-[2]"
               style={{ background: "radial-gradient(circle, hsl(35 100% 50% / 0.2) 0%, transparent 70%)" }}
             />
-            <img src={logoGold} alt="NovaActa" className="relative z-10 w-24 h-24 md:w-32 md:h-32 object-contain" />
+            <img src={logoGold} alt="NovaActa" className="relative z-10 w-20 h-20 md:w-28 md:h-28 object-contain" />
           </div>
-        </motion.div>
-
-        {/* Wordmark */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.5, delay: 0.4 }}
-          className="flex justify-center mb-12"
-        >
-          <img src={wordmark} alt="NOVA·ACTA" className="h-8 md:h-12 object-contain" />
+          <img src={wordmark} alt="NOVA·ACTA" className="h-8 md:h-14 object-contain" />
         </motion.div>
 
         {/* Tagline */}
