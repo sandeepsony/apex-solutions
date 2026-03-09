@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import layerPlatform from "@/assets/layer-platform.jpg";
 
 const disciplines = [
   { name: "Structural Engineering", count: 3 },
@@ -16,43 +17,45 @@ const TeamSection = () => {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start end", "center center"],
+    offset: ["start end", "end start"],
   });
-  const opacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
+  const opacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
+  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
 
   return (
-    <section ref={ref} className="py-32 md:py-48">
-      <motion.div style={{ opacity }} className="cinematic-container">
-        <div className="max-w-3xl mx-auto text-center mb-20">
-          <div className="label-mono mb-12">Who we are</div>
-          
-          <h2 className="font-heading text-3xl md:text-4xl font-medium text-foreground leading-tight mb-8">
+    <section ref={ref} className="relative py-32 md:py-48 overflow-hidden">
+      {/* Background image */}
+      <motion.div style={{ y: bgY }} className="absolute inset-0">
+        <img src={layerPlatform} alt="" className="w-full h-full object-cover opacity-[0.07]" />
+      </motion.div>
+
+      <motion.div style={{ opacity }} className="cinematic-container relative z-10">
+        {/* Big editorial headline */}
+        <div className="max-w-4xl mb-20">
+          <div className="label-mono mb-8">Who we are</div>
+
+          <h2 className="font-heading text-4xl md:text-6xl font-medium text-foreground leading-[1.1] mb-8">
             14 PhDs. 8 disciplines.
-            <br />
-            <span className="italic text-muted-foreground">One mandate: find what others miss.</span>
           </h2>
-
-          <div className="divider-line mx-auto mb-12" />
-
-          <p className="font-body text-sm text-muted-foreground leading-relaxed">
-            We are not consultants. We are researchers who chose industry over academia — 
-            because the most interesting problems live inside your data, 
-            not inside journals.
+          <p className="font-heading text-2xl md:text-3xl italic text-muted-foreground leading-relaxed max-w-2xl">
+            We are not consultants. We are researchers who chose industry 
+            over academia — because the most interesting problems live 
+            inside your data, not inside journals.
           </p>
         </div>
 
-        {/* Discipline grid */}
-        <div className="max-w-2xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-border">
+        {/* Discipline grid - editorial style */}
+        <div className="border-t border-border">
+          <div className="grid grid-cols-2 md:grid-cols-4">
             {disciplines.map((d) => (
               <div
                 key={d.name}
-                className="bg-background p-6 text-center group hover:bg-card transition-colors duration-500"
+                className="border-b border-r border-border p-8 group hover:bg-card transition-colors duration-500"
               >
-                <div className="font-heading text-2xl font-medium text-foreground mb-2 group-hover:text-accent transition-colors duration-500">
+                <div className="font-heading text-4xl font-medium text-foreground mb-3 group-hover:text-accent transition-colors duration-500">
                   {d.count}
                 </div>
-                <div className="font-mono-data text-[8px] uppercase tracking-[0.2em] text-muted-foreground leading-relaxed">
+                <div className="font-mono-data text-[9px] uppercase tracking-[0.15em] text-muted-foreground leading-relaxed">
                   {d.name}
                 </div>
               </div>
