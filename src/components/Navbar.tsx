@@ -29,9 +29,8 @@ const Navbar = () => {
       <div className="cinematic-container">
         <div className="flex h-20 items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3">
-            <img src={logoGold} alt="NovaActa" className="w-10 h-10 md:w-12 md:h-12 object-contain" />
-            <img src={wordmark} alt="NOVA·ACTA" className="h-5 md:h-7 object-contain hidden sm:block" />
+          <Link to="/" className="flex items-center">
+            <img src={logoGold} alt="NovaActa" className="w-10 h-10 md:w-11 md:h-11 object-contain" />
           </Link>
 
           {/* Desktop nav */}
