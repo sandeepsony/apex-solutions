@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,50 +6,52 @@
 
 @layer base {
   :root {
-    --background: 40 25% 97%;
-    --foreground: 220 30% 12%;
+    --background: 225 15% 6%;
+    --foreground: 45 10% 90%;
 
-    --card: 40 20% 95%;
-    --card-foreground: 220 30% 12%;
+    --card: 225 14% 9%;
+    --card-foreground: 45 10% 90%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 220 30% 12%;
+    --popover: 225 14% 9%;
+    --popover-foreground: 45 10% 90%;
 
-    --primary: 220 35% 15%;
-    --primary-foreground: 40 25% 97%;
+    --primary: 38 80% 55%;
+    --primary-foreground: 225 15% 6%;
 
-    --secondary: 40 15% 92%;
-    --secondary-foreground: 220 30% 12%;
+    --secondary: 225 12% 12%;
+    --secondary-foreground: 45 10% 80%;
 
-    --muted: 40 12% 90%;
-    --muted-foreground: 220 10% 46%;
+    --muted: 225 10% 14%;
+    --muted-foreground: 225 8% 48%;
 
-    --accent: 38 60% 52%;
-    --accent-foreground: 220 35% 10%;
+    --accent: 38 80% 55%;
+    --accent-foreground: 225 15% 6%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 40 15% 88%;
-    --input: 40 15% 88%;
-    --ring: 220 35% 15%;
+    --border: 225 10% 15%;
+    --input: 225 10% 15%;
+    --ring: 38 80% 55%;
 
     --radius: 0.125rem;
 
     --font-heading: 'EB Garamond', 'Georgia', serif;
     --font-body: 'Inter', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 
-    --shadow-subtle: 0 1px 3px hsl(220 30% 12% / 0.04);
-    --shadow-card: 0 4px 20px hsl(220 30% 12% / 0.06);
+    --grid-color: hsl(225 10% 12%);
+    --glow-amber: 0 0 30px hsl(38 80% 55% / 0.15);
+    --glow-amber-strong: 0 0 50px hsl(38 80% 55% / 0.25);
 
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 225 15% 8%;
+    --sidebar-foreground: 45 10% 90%;
+    --sidebar-primary: 38 80% 55%;
+    --sidebar-primary-foreground: 225 15% 6%;
+    --sidebar-accent: 225 12% 14%;
+    --sidebar-accent-foreground: 45 10% 90%;
+    --sidebar-border: 225 10% 15%;
+    --sidebar-ring: 38 80% 55%;
   }
 }
 
@@ -71,54 +73,75 @@
 }
 
 @layer utilities {
-  .text-accent-warm {
-    color: hsl(var(--accent));
-  }
-
-  .border-subtle {
-    border-color: hsl(var(--border));
+  .font-mono-data {
+    font-family: var(--font-mono);
   }
 
   .editorial-container {
-    @apply max-w-[1280px] mx-auto px-6 md:px-12 lg:px-20;
+    @apply max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20;
   }
 
   .label-uppercase {
-    @apply text-[11px] font-semibold uppercase tracking-[0.2em] text-muted-foreground;
-    font-family: var(--font-body);
+    font-family: var(--font-mono);
+    @apply text-[10px] font-medium uppercase tracking-[0.25em] text-muted-foreground;
   }
 
-  .body-large {
-    @apply text-lg md:text-xl leading-relaxed text-muted-foreground;
-    font-family: var(--font-body);
+  .text-accent-warm {
+    color: hsl(var(--primary));
+  }
+
+  .grid-bg {
+    background-image:
+      linear-gradient(var(--grid-color) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .border-glow {
+    border-color: hsl(var(--primary) / 0.3);
+    box-shadow: var(--glow-amber);
+  }
+
+  .data-card {
+    @apply bg-card border border-border;
+    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .data-card:hover {
+    border-color: hsl(var(--primary) / 0.3);
+    box-shadow: var(--glow-amber);
+  }
+
+  .scan-line {
+    background: linear-gradient(
+      180deg,
+      transparent 0%,
+      hsl(var(--primary) / 0.03) 50%,
+      transparent 100%
+    );
+    animation: scan 8s linear infinite;
   }
 }
 
-@keyframes reveal-up {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+@keyframes scan {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
 }
 
-.animate-reveal {
-  animation: reveal-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+@keyframes pulse-dot {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
 }
 
-.animate-reveal-delay-1 {
-  animation: reveal-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
-  opacity: 0;
+@keyframes count-glow {
+  0%, 100% { text-shadow: 0 0 10px hsl(38 80% 55% / 0.3); }
+  50% { text-shadow: 0 0 25px hsl(38 80% 55% / 0.6); }
 }
 
-.animate-reveal-delay-2 {
-  animation: reveal-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
-  opacity: 0;
+.animate-pulse-dot {
+  animation: pulse-dot 2s ease-in-out infinite;
 }
 
-.animate-reveal-delay-3 {
-  animation: reveal-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards;
-  opacity: 0;
-}
-
-.animate-reveal-delay-4 {
-  animation: reveal-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.4s forwards;
-  opacity: 0;
+.animate-count-glow {
+  animation: count-glow 3s ease-in-out infinite;
 }
