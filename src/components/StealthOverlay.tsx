@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Lock, AlertCircle } from "lucide-react";
+import { Lock, AlertCircle, KeyRound } from "lucide-react";
 import Wordmark from "@/components/Wordmark";
 import logoGold from "@/assets/logo-compass-gold.png";
 
@@ -24,15 +24,12 @@ const StealthOverlay = () => {
   const [designation, setDesignation] = useState("");
   const [accessCode, setAccessCode] = useState("");
   const [error, setError] = useState("");
-  const [email, setEmail] = useState("");
-  const [designation, setDesignation] = useState("");
-  const [error, setError] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
 
-    if (!name.trim() || !email.trim() || !designation.trim()) {
+    if (!name.trim() || !email.trim() || !designation.trim() || !accessCode.trim()) {
       setError("All fields are required.");
       return;
     }
@@ -46,6 +43,11 @@ const StealthOverlay = () => {
     const domain = email.split("@")[1]?.toLowerCase();
     if (BLOCKED_DOMAINS.includes(domain)) {
       setError("Please use your organization email. Generic email providers are not accepted.");
+      return;
+    }
+
+    if (accessCode !== ACCESS_CODE) {
+      setError("Invalid access code. Contact NovaActa for authorization.");
       return;
     }
 
@@ -97,8 +99,8 @@ const StealthOverlay = () => {
               </div>
 
               <p className="font-body text-sm text-muted-foreground text-center leading-relaxed mb-5">
-                Access is restricted to verified professionals. Please enter your
-                organization credentials to continue.
+                Access is restricted to authorized personnel only. Enter your
+                credentials and access code to continue.
               </p>
 
               <div className="divider-line mx-auto mb-5" />
@@ -129,6 +131,17 @@ const StealthOverlay = () => {
                   className={inputClass}
                   maxLength={255}
                 />
+                <div className="relative">
+                  <KeyRound className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-accent/40" />
+                  <input
+                    type="password"
+                    placeholder="Access Code"
+                    value={accessCode}
+                    onChange={(e) => setAccessCode(e.target.value)}
+                    className={`${inputClass} pl-9`}
+                    maxLength={50}
+                  />
+                </div>
 
                 {error && (
                   <div className="flex items-start gap-2 text-destructive">
@@ -146,7 +159,7 @@ const StealthOverlay = () => {
               </form>
 
               <p className="mt-4 font-mono-data text-[9px] uppercase tracking-[0.2em] text-muted-foreground/50 text-center">
-                Organization email required · All content is under NDA
+                Access code required · All content is under NDA
               </p>
             </div>
 
