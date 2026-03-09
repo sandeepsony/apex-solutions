@@ -1,88 +1,89 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 import { motion } from "framer-motion";
-import ParticleNetwork from "@/components/ParticleNetwork";
-import AnimatedCounter from "@/components/AnimatedCounter";
 
 const HeroSection = () => {
   return (
     <section className="pt-16 relative">
-      {/* Hero */}
-      <div className="relative min-h-[85vh] flex items-center overflow-hidden grid-bg">
-        <ParticleNetwork />
+      <div className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+        {/* Subtle grid */}
+        <div className="absolute inset-0 grid-bg opacity-20" />
 
-        {/* Scan line effect */}
-        <div className="absolute inset-0 scan-line pointer-events-none" />
+        {/* Radial glow */}
+        <div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full"
+          style={{
+            background: "radial-gradient(circle, hsl(38 80% 55% / 0.06) 0%, transparent 70%)",
+          }}
+        />
 
-        <div className="editorial-container relative z-10 py-24">
-          <div className="max-w-3xl">
-            {/* Status indicator */}
+        <div className="editorial-container relative z-10 text-center">
+          {/* Status */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.2 }}
+            className="flex items-center justify-center gap-3 mb-10"
+          >
+            <div className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse-dot" />
+            <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-primary">
+              PhD-Led Engineering Intelligence
+            </span>
+          </motion.div>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.4 }}
+            className="font-heading text-5xl md:text-7xl lg:text-8xl font-medium leading-[1.0] text-foreground mb-8 max-w-4xl mx-auto"
+          >
+            You have the data.
+            <br />
+            <span className="text-primary">We see what's inside.</span>
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.7 }}
+            className="font-body text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto mb-12"
+          >
+            We embed PhD domain experts into your engineering data — revealing
+            failures before they happen, efficiencies you can't see, and decisions
+            your teams couldn't make alone.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.9 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center mb-20"
+          >
+            <Button variant="command" size="lg">
+              Start a Conversation
+            </Button>
+            <Button variant="commandOutline" size="lg">
+              View Our Work
+            </Button>
+          </motion.div>
+
+          {/* Scroll invitation */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 1.5 }}
+            className="flex flex-col items-center gap-3"
+          >
+            <span className="font-mono text-[9px] uppercase tracking-[0.3em] text-muted-foreground/60">
+              See how we dissect complex systems
+            </span>
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              className="flex items-center gap-3 mb-8"
+              animate={{ y: [0, 10, 0] }}
+              transition={{ duration: 2, repeat: Infinity }}
             >
-              <div className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse-dot" />
-              <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-primary">
-                Systems Active — Accepting New Engagements
-              </span>
+              <ArrowDown className="h-4 w-4 text-primary/50" />
             </motion.div>
-
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.1 }}
-              className="font-heading text-5xl md:text-6xl lg:text-7xl font-medium leading-[1.05] text-foreground mb-8"
-            >
-              You have the data.
-              <br />
-              <span className="text-primary">We have the PhDs.</span>
-            </motion.h1>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.3 }}
-              className="font-body text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl mb-10"
-            >
-              Engineering-intensive industries generate petabytes of operational data they
-              can't interpret. Our PhD domain experts turn that data into decisions —
-              solving problems that have resisted conventional approaches for decades.
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-              className="flex flex-col sm:flex-row gap-4"
-            >
-              <Button variant="command" size="lg">
-                See How We Work <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-              <Button variant="commandOutline" size="lg">
-                View Case Studies
-              </Button>
-            </motion.div>
-          </div>
-        </div>
-
-        {/* Decorative grid coordinates */}
-        <div className="absolute bottom-6 right-6 font-mono text-[9px] text-muted-foreground/30 hidden md:block">
-          <p>LAT 25.2048 · LON 55.2708</p>
-          <p>NODE: AX-PRIMARY · STATUS: ACTIVE</p>
-        </div>
-      </div>
-
-      {/* Stats bar */}
-      <div className="border-y border-border bg-card/50">
-        <div className="editorial-container">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-0 divide-x divide-border py-12">
-            <AnimatedCounter end={200} suffix="+" label="PhD Domain Experts" />
-            <AnimatedCounter end={85} suffix="%" label="Of Client Data Untapped" />
-            <AnimatedCounter end={12} prefix="$" suffix="B" label="Value Unlocked" />
-            <AnimatedCounter end={40} suffix="+" label="Engineering Disciplines" />
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
