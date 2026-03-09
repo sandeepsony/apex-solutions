@@ -7,6 +7,7 @@ import caseWindfarm from "@/assets/case-windfarm.jpg";
 import caseOffshore from "@/assets/case-offshore.jpg";
 import caseGearsystem from "@/assets/case-gearsystem.jpg";
 import casePipeline from "@/assets/case-pipeline.jpg";
+import caseWastewater from "@/assets/case-wastewater.jpg";
 
 const cases = [
   {
@@ -165,9 +166,35 @@ const cases = [
       { value: "12m", label: "Precision located" },
     ],
   },
+  {
+    title: "Wastewater Treatment",
+    shortTitle: "Wastewater",
+    headline: "A treatment plant was failing compliance.",
+    subline: "The chemistry said it shouldn't.",
+    question: "Why was a wastewater plant consistently breaching discharge limits?",
+    summary:
+      "A municipal-industrial wastewater treatment facility serving 200,000 people was intermittently exceeding phosphorus and ammonia discharge limits despite operating within design parameters. Regulators issued a 6-month compliance notice with $15M in potential fines.",
+    investigation:
+      "We deployed a combination of real-time effluent chemistry monitoring, hydraulic flow modeling, and microbial community DNA sequencing across all treatment stages. Our team built a first-principles biochemical model calibrated against 2 years of lab data.",
+    findings: [
+      "Intermittent industrial discharges from an upstream chemical plant were shocking the nitrifying bacteria population",
+      "Hydraulic short-circuiting in the secondary clarifier reduced effective retention time by 35%",
+      "Phosphorus removal was undermined by ferric dosing at the wrong pH — a 0.4 pH unit error in the control setpoint",
+      "The combination of biological and chemical failures only manifested during peak flow events, masking the root causes during routine sampling",
+    ],
+    outcome: "Achieved full regulatory compliance within 8 weeks. Control system recalibration and clarifier baffle modification cost $340K — avoiding $15M in fines and a $60M plant upgrade.",
+    disciplines: ["Environmental Engineering", "Biochemistry", "Hydraulic Modeling", "Process Control"],
+    image: caseWastewater,
+    color: "hsl(180, 60%, 45%)",
+    stats: [
+      { value: "$15M", label: "Fines avoided" },
+      { value: "8wk", label: "To compliance" },
+      { value: "$340K", label: "Fix cost" },
+    ],
+  },
 ];
 
-const SEGMENT_COUNT = 6;
+const SEGMENT_COUNT = 7;
 const RADIUS = 200;
 const CENTER = 240;
 const INNER_RADIUS = 75;
@@ -266,8 +293,8 @@ const CasesSection = () => {
         <div className="label-mono mb-4">Case Studies</div>
         <div className="divider-line mb-6" />
         <h1 className="font-heading text-4xl md:text-6xl font-medium text-foreground max-w-3xl leading-[1.1]">
-          Six investigations.{" "}
-          <span className="italic text-accent">Six engineering puzzles solved.</span>
+          Seven investigations.{" "}
+          <span className="italic text-accent">Seven engineering puzzles solved.</span>
         </h1>
         <p className="font-body text-sm text-muted-foreground mt-4 max-w-lg">
           Each segment represents one of our landmark case studies. Click to dive deep into the investigation.
@@ -304,7 +331,7 @@ const CasesSection = () => {
                 />
               ))}
               <text x={CENTER} y={CENTER - 8} textAnchor="middle" fill="hsl(0,0%,93%)" fontSize="16" fontFamily="'JetBrains Mono', monospace" fontWeight="500">
-                {activeCase !== null ? String(activeCase + 1).padStart(2, "0") : "06"}
+                {activeCase !== null ? String(activeCase + 1).padStart(2, "0") : "07"}
               </text>
               <text x={CENTER} y={CENTER + 12} textAnchor="middle" fill="hsl(0,0%,45%)" fontSize="9" fontFamily="'JetBrains Mono', monospace" letterSpacing="0.2em">
                 {activeCase !== null ? "ACTIVE" : "CASES"}
