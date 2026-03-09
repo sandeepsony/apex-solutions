@@ -1,35 +1,68 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { Menu, X } from "lucide-react";
+
+const navItems = ["Capabilities", "Industries", "Insights", "About", "Contact"];
 
 const Navbar = () => {
+  const [mobileOpen, setMobileOpen] = useState(false);
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-xl">
-      <div className="container flex h-16 items-center justify-between">
-        <div className="flex items-center gap-2">
-          <div className="h-8 w-8 rounded-sm bg-primary flex items-center justify-center">
-            <span className="font-heading text-primary-foreground text-sm font-bold">A</span>
-          </div>
-          <span className="font-heading text-lg font-semibold tracking-tight text-foreground">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm">
+      <div className="editorial-container">
+        <div className="flex h-20 items-center justify-between border-b border-border">
+          <a href="/" className="font-heading text-xl font-semibold tracking-tight text-foreground">
             Apex Advisory
-          </span>
-        </div>
+          </a>
 
-        <div className="hidden md:flex items-center gap-8">
-          {["Expertise", "Approach", "Industries", "Contact"].map((item) => (
-            <a
-              key={item}
-              href={`#${item.toLowerCase()}`}
-              className="text-xs font-medium uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors duration-300"
-            >
-              {item}
-            </a>
-          ))}
-        </div>
+          <div className="hidden lg:flex items-center gap-10">
+            {navItems.map((item) => (
+              <a
+                key={item}
+                href={`#${item.toLowerCase()}`}
+                className="font-body text-[11px] font-medium uppercase tracking-[0.15em] text-muted-foreground hover:text-foreground transition-colors duration-300"
+              >
+                {item}
+              </a>
+            ))}
+          </div>
 
-        <Button variant="hero" size="sm" className="hidden sm:inline-flex">
-          Engage Us <ArrowRight className="ml-1 h-3 w-3" />
-        </Button>
+          <div className="hidden lg:block">
+            <Button variant="editorial" size="sm">
+              Get in Touch
+            </Button>
+          </div>
+
+          <button
+            className="lg:hidden text-foreground"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label="Toggle menu"
+          >
+            {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
       </div>
+
+      {/* Mobile menu */}
+      {mobileOpen && (
+        <div className="lg:hidden bg-background border-b border-border">
+          <div className="editorial-container py-8 flex flex-col gap-6">
+            {navItems.map((item) => (
+              <a
+                key={item}
+                href={`#${item.toLowerCase()}`}
+                onClick={() => setMobileOpen(false)}
+                className="font-body text-sm font-medium uppercase tracking-[0.1em] text-muted-foreground hover:text-foreground transition-colors"
+              >
+                {item}
+              </a>
+            ))}
+            <Button variant="editorial" size="sm" className="w-fit mt-2">
+              Get in Touch
+            </Button>
+          </div>
+        </div>
+      )}
     </nav>
   );
 };

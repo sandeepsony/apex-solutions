@@ -1,65 +1,70 @@
 const steps = [
   {
     number: "01",
-    title: "Diagnose",
+    title: "Scoping & Diagnosis",
     description:
-      "We deploy PhD-level experts to deeply understand the problem space, stakeholder landscape, and technical constraints.",
+      "We deploy senior PhD consultants to rigorously define the problem space, map stakeholder landscapes, and identify the highest-leverage intervention points.",
   },
   {
     number: "02",
-    title: "Model",
+    title: "Analytical Modeling",
     description:
-      "Our AI-augmented analytical frameworks model complex scenarios, identify hidden patterns, and quantify risk with precision.",
+      "Our proprietary AI frameworks and domain-specific models generate insights that are both computationally rigorous and operationally actionable.",
   },
   {
     number: "03",
-    title: "Engineer",
+    title: "Solution Architecture",
     description:
-      "We architect bespoke solutions—from digital twins to optimization algorithms—tested against real-world conditions.",
+      "We design bespoke solutions — from digital twins to optimization algorithms — stress-tested against real-world constraints and failure modes.",
   },
   {
     number: "04",
-    title: "Deliver",
+    title: "Implementation & Transfer",
     description:
-      "Implementation with embedded teams, knowledge transfer, and measurable KPIs that prove ROI within the first quarter.",
+      "Embedded teams drive execution with full knowledge transfer, ensuring your organization retains capability long after our engagement concludes.",
   },
 ];
 
 const ApproachSection = () => {
   return (
-    <section id="approach" className="py-28 bg-secondary/30">
-      <div className="container">
-        <div className="mb-16 max-w-2xl">
-          <p className="text-xs font-medium uppercase tracking-[0.3em] text-primary mb-4">
-            Our Methodology
-          </p>
-          <h2 className="font-heading text-4xl md:text-5xl font-bold tracking-tight text-foreground mb-6">
-            Rigor Meets{" "}
-            <span className="text-gradient">Innovation</span>
-          </h2>
-          <p className="text-muted-foreground text-lg leading-relaxed">
-            A proven four-phase approach that combines academic rigor with the
-            speed and precision of AI-driven consulting.
-          </p>
-        </div>
+    <section id="about" className="py-24 md:py-32">
+      <div className="editorial-container">
+        <div className="grid lg:grid-cols-12 gap-16">
+          {/* Left column */}
+          <div className="lg:col-span-4">
+            <p className="label-uppercase mb-3">Our Approach</p>
+            <h2 className="font-heading text-3xl md:text-4xl font-medium text-foreground mb-5">
+              Rigor Without Compromise
+            </h2>
+            <p className="font-body text-base text-muted-foreground leading-relaxed">
+              Every engagement follows a disciplined methodology refined across hundreds
+              of complex technical engagements. We don't template our thinking — we
+              calibrate it to your reality.
+            </p>
+          </div>
 
-        <div className="grid gap-0 md:grid-cols-4">
-          {steps.map((step, index) => (
-            <div key={step.number} className="relative group p-8">
-              {index < steps.length - 1 && (
-                <div className="hidden md:block absolute top-12 right-0 w-px h-16 bg-border" />
-              )}
-              <span className="text-5xl font-heading font-bold text-primary/20 group-hover:text-primary/40 transition-colors duration-500">
-                {step.number}
-              </span>
-              <h3 className="font-heading text-2xl font-semibold text-foreground mt-4 mb-3">
-                {step.title}
-              </h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                {step.description}
-              </p>
+          {/* Right column - steps */}
+          <div className="lg:col-span-8">
+            <div className="space-y-0 divide-y divide-border">
+              {steps.map((step) => (
+                <div key={step.number} className="group py-10 first:pt-0">
+                  <div className="flex gap-8">
+                    <span className="font-heading text-4xl font-medium text-border group-hover:text-accent transition-colors duration-500">
+                      {step.number}
+                    </span>
+                    <div>
+                      <h3 className="font-heading text-xl font-medium text-foreground mb-2">
+                        {step.title}
+                      </h3>
+                      <p className="font-body text-sm text-muted-foreground leading-relaxed max-w-lg">
+                        {step.description}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
       </div>
     </section>
