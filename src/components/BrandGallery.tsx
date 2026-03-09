@@ -1,79 +1,99 @@
-import logo8 from "@/assets/logo-option-8.png";
+import logoGold from "@/assets/logo-compass-gold.png";
 import wordmark1 from "@/assets/wordmark-1.png";
 import wordmark2 from "@/assets/wordmark-2.png";
 import wordmark3 from "@/assets/wordmark-3.png";
 import wordmark4 from "@/assets/wordmark-4.png";
 import wordmark5 from "@/assets/wordmark-5.png";
 import wordmark6 from "@/assets/wordmark-6.png";
-
-const logos = [
-  { id: "logo-8", src: logo8, name: "Compass Mark", desc: "North star compass — your chosen icon", isSquare: true },
-];
+import wordmark7 from "@/assets/wordmark-7.png";
+import wordmark8 from "@/assets/wordmark-8.png";
+import wordmark9 from "@/assets/wordmark-9.png";
+import wordmark10 from "@/assets/wordmark-10.png";
+import wordmark11 from "@/assets/wordmark-11.png";
+import wordmark12 from "@/assets/wordmark-12.png";
 
 const wordmarks = [
-  { id: "wordmark-1", src: wordmark1, name: "Wordmark 1", desc: "Thin elegant serif — timeless, refined" },
-  { id: "wordmark-2", src: wordmark2, name: "Wordmark 2", desc: "Geometric sans — modern, tech-forward" },
-  { id: "wordmark-3", src: wordmark3, name: "Wordmark 3", desc: "Bold serif — commanding, editorial" },
-  { id: "wordmark-4", src: wordmark4, name: "Wordmark 4", desc: "Didone serif — luxury fashion feel" },
-  { id: "wordmark-5", src: wordmark5, name: "Wordmark 5", desc: "Monospace split — technical blueprint" },
-  { id: "wordmark-6", src: wordmark6, name: "Wordmark 6", desc: "Script signature — personal, bespoke" },
+  { id: 1, src: wordmark1, name: "1", desc: "Thin elegant serif" },
+  { id: 2, src: wordmark2, name: "2", desc: "Geometric sans" },
+  { id: 3, src: wordmark3, name: "3", desc: "Bold editorial serif" },
+  { id: 4, src: wordmark4, name: "4", desc: "Luxury didone" },
+  { id: 5, src: wordmark5, name: "5", desc: "Technical monospace" },
+  { id: 6, src: wordmark6, name: "6", desc: "Script signature" },
+  { id: 7, src: wordmark7, name: "7", desc: "Futuristic rounded" },
+  { id: 8, src: wordmark8, name: "8", desc: "Stacked geometric" },
+  { id: 9, src: wordmark9, name: "9", desc: "Bold industrial stencil" },
+  { id: 10, src: wordmark10, name: "10", desc: "Art deco ornate" },
+  { id: 11, src: wordmark11, name: "11", desc: "Sci-fi glowing" },
+  { id: 12, src: wordmark12, name: "12", desc: "Lowercase friendly" },
 ];
 
 const BrandGallery = () => {
   return (
-    <section className="min-h-screen py-24 bg-background">
+    <section className="min-h-screen py-16 bg-background">
       <div className="cinematic-container">
-        {/* Compass Logo Section */}
-        <div className="mb-20">
-          <div className="label-mono mb-4">Your Chosen Logo Mark</div>
-          <div className="divider-line mb-12" />
+        {/* Big Eye-Catching Logo Section */}
+        <div className="mb-24">
+          <div className="label-mono mb-4 text-center">Your Logo Mark — Now Bigger & Bolder</div>
+          <div className="divider-line mx-auto mb-12" />
           
           <div className="flex justify-center">
-            <div className="bg-card border border-border p-16 inline-block">
+            <div className="relative">
+              {/* Glow effect behind */}
+              <div className="absolute inset-0 bg-gradient-radial from-amber-500/20 via-transparent to-transparent blur-3xl scale-150" />
               <img
-                src={logo8}
-                alt="NovaActa Compass Mark"
-                className="w-32 h-32 object-contain"
+                src={logoGold}
+                alt="NovaActa Gold Compass"
+                className="relative z-10 w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 object-contain"
               />
             </div>
           </div>
-          <p className="text-center mt-6 font-body text-sm text-muted-foreground">
-            North Star Compass — Direction, Discovery, Exploration
+          <p className="text-center mt-8 font-heading text-2xl text-foreground">
+            Gold North Star Compass
+          </p>
+          <p className="text-center mt-2 font-body text-sm text-muted-foreground">
+            Striking, premium, impossible to miss
           </p>
         </div>
 
         {/* Wordmark Options */}
-        <div className="label-mono mb-4">Choose a Wordmark Style</div>
+        <div className="label-mono mb-4">Choose Your Wordmark (1-12)</div>
         <div className="divider-line mb-12" />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-border">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {wordmarks.map((wm) => (
             <div
               key={wm.id}
-              className="bg-background group hover:bg-card transition-colors duration-500 p-8"
+              className="bg-card border border-border group hover:border-accent/50 transition-all duration-500 overflow-hidden"
             >
               {/* Wordmark display */}
-              <div className="aspect-[2/1] flex items-center justify-center mb-6 bg-card rounded overflow-hidden">
+              <div className="aspect-[2/1] flex items-center justify-center p-4 bg-black">
                 <img
                   src={wm.src}
-                  alt={wm.name}
+                  alt={`Wordmark ${wm.name}`}
                   className="w-full h-full object-contain"
                 />
               </div>
               {/* Info */}
-              <div className="font-mono-data text-[10px] uppercase tracking-[0.3em] text-accent mb-2">
-                {wm.name}
+              <div className="p-4 border-t border-border">
+                <div className="flex items-center justify-between">
+                  <span className="font-mono-data text-lg font-bold text-accent">
+                    #{wm.name}
+                  </span>
+                  <span className="font-body text-xs text-muted-foreground">
+                    {wm.desc}
+                  </span>
+                </div>
               </div>
-              <p className="font-body text-sm text-muted-foreground">
-                {wm.desc}
-              </p>
             </div>
           ))}
         </div>
 
-        <div className="mt-16 text-center">
-          <p className="font-heading text-xl italic text-muted-foreground">
-            Tell me which wordmark number (1-6) you prefer and I'll pair it with your compass logo.
+        <div className="mt-16 text-center border-t border-border pt-12">
+          <p className="font-heading text-2xl text-foreground mb-2">
+            Which wordmark do you like?
+          </p>
+          <p className="font-body text-sm text-muted-foreground">
+            Just tell me the number (1-12) and I'll pair it with your gold compass
           </p>
         </div>
       </div>
