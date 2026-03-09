@@ -15,10 +15,10 @@ const StealthOverlay = () => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
-          className="fixed inset-0 z-[100] pointer-events-none flex items-center justify-center"
+          className="fixed inset-0 z-[100] flex items-center justify-center"
         >
-          {/* Semi-transparent backdrop — allows scroll/click through */}
-          <div className="absolute inset-0 bg-background/40 backdrop-blur-[2px]" />
+          {/* Full-screen click blocker — clear, no blur, no tint */}
+          <div className="absolute inset-0" />
 
           {/* Dialog box — this blocks clicks only on itself */}
           <motion.div
