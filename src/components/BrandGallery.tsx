@@ -11,6 +11,12 @@ import wordmark9 from "@/assets/wordmark-9.png";
 import wordmark10 from "@/assets/wordmark-10.png";
 import wordmark11 from "@/assets/wordmark-11.png";
 import wordmark12 from "@/assets/wordmark-12.png";
+import wordmarkTech1 from "@/assets/wordmark-tech-1.png";
+import wordmarkTech2 from "@/assets/wordmark-tech-2.png";
+import wordmarkTech3 from "@/assets/wordmark-tech-3.png";
+import wordmarkTech4 from "@/assets/wordmark-tech-4.png";
+import wordmarkTech5 from "@/assets/wordmark-tech-5.png";
+import wordmarkTech6 from "@/assets/wordmark-tech-6.png";
 
 const wordmarks = [
   { id: 1, src: wordmark1, name: "1", desc: "Thin elegant serif" },
