@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { BrandMark } from "@/components/NovaActaLogo";
 
 const CTASection = () => {
   const ref = useRef<HTMLDivElement>(null);
@@ -14,6 +15,10 @@ const CTASection = () => {
     <section ref={ref} className="py-32 md:py-48 border-t border-border">
       <motion.div style={{ opacity }} className="cinematic-container">
         <div className="max-w-2xl mx-auto text-center">
+          <div className="flex justify-center mb-10 text-muted-foreground/30">
+            <BrandMark size={40} />
+          </div>
+
           <div className="label-mono mb-12">Next step</div>
 
           <h2 className="font-heading text-3xl md:text-5xl font-medium text-foreground leading-tight mb-8 italic">
