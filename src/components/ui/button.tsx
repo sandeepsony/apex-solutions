@@ -1,11 +1,10 @@
 import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
-
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-none text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
@@ -15,13 +14,13 @@ const buttonVariants = cva(
         secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        editorial: "bg-primary text-primary-foreground font-body text-[11px] font-semibold uppercase tracking-[0.15em] hover:bg-foreground transition-colors duration-300",
-        editorialOutline: "border border-foreground/20 text-foreground font-body text-[11px] font-semibold uppercase tracking-[0.15em] hover:bg-foreground hover:text-primary-foreground transition-colors duration-300",
-        editorialGhost: "text-foreground font-body text-[11px] font-semibold uppercase tracking-[0.15em] hover:text-accent transition-colors duration-300 underline underline-offset-4 decoration-foreground/30 hover:decoration-accent",
+        command: "bg-primary text-primary-foreground font-mono text-[10px] font-medium uppercase tracking-[0.2em] hover:shadow-[0_0_30px_hsl(38_80%_55%/0.3)] transition-all duration-300",
+        commandOutline: "border border-primary/40 text-foreground font-mono text-[10px] font-medium uppercase tracking-[0.2em] hover:bg-primary/10 hover:border-primary transition-all duration-300",
+        commandGhost: "text-primary font-mono text-[10px] font-medium uppercase tracking-[0.2em] hover:text-foreground transition-all duration-300",
       },
       size: {
         default: "h-10 px-4 py-2",
-        sm: "h-9 rounded-md px-3",
+        sm: "h-9 px-3",
         lg: "h-12 px-8 py-3",
         icon: "h-10 w-10",
       },
