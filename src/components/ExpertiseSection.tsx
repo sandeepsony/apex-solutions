@@ -1,77 +1,85 @@
-import { Cpu, Leaf, Factory, Droplets, Building2, Layers } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
-const domains = [
+const capabilities = [
   {
-    icon: Cpu,
-    title: "Engineering & Systems",
+    title: "Engineering & Complex Systems",
     description:
-      "Complex systems design, optimization, and failure analysis led by PhD engineers with decades of field experience.",
+      "Failure analysis, systems optimization, and design assurance led by PhD engineers with deep operational experience.",
+    areas: ["Structural Integrity", "Process Safety", "Systems Engineering"],
   },
   {
-    icon: Leaf,
     title: "Climate & Sustainability",
     description:
-      "Carbon strategy, ESG quantification, and climate risk modeling using proprietary AI frameworks.",
+      "Rigorous climate risk quantification, carbon strategy, and ESG framework development grounded in earth science.",
+    areas: ["Carbon Accounting", "Climate Risk Modeling", "Net-Zero Strategy"],
   },
   {
-    icon: Factory,
-    title: "Advanced Manufacturing",
-    description:
-      "Industry 4.0 transformation, predictive maintenance, and process optimization at scale.",
-  },
-  {
-    icon: Droplets,
     title: "Oil & Gas",
     description:
-      "Reservoir engineering, asset integrity, and energy transition strategy backed by deep subsurface expertise.",
+      "Subsurface modeling, reservoir optimization, and energy transition advisory from industry veterans.",
+    areas: ["Reservoir Engineering", "Asset Integrity", "Decommissioning"],
   },
   {
-    icon: Building2,
-    title: "BIM & Construction",
+    title: "Advanced Manufacturing",
     description:
-      "Building information modeling, clash detection automation, and lifecycle cost optimization.",
+      "Industry 4.0 transformation, AI-driven quality control, and predictive maintenance at industrial scale.",
+    areas: ["Predictive Maintenance", "Digital Quality", "Process Optimization"],
   },
   {
-    icon: Layers,
+    title: "BIM & Construction Technology",
+    description:
+      "Building information modeling, automated clash detection, and lifecycle cost analytics for major capital projects.",
+    areas: ["BIM Strategy", "Clash Detection", "4D/5D Modeling"],
+  },
+  {
     title: "Digital Twins",
     description:
-      "Physics-informed digital twin development for real-time asset monitoring and scenario planning.",
+      "Physics-informed digital twin architectures for real-time monitoring, simulation, and autonomous operations.",
+    areas: ["IoT Integration", "Simulation Modeling", "Decision Automation"],
   },
 ];
 
 const ExpertiseSection = () => {
   return (
-    <section id="expertise" className="py-28">
-      <div className="container">
-        <div className="section-divider mb-20" />
-
-        <div className="mb-16 max-w-2xl">
-          <p className="text-xs font-medium uppercase tracking-[0.3em] text-primary mb-4">
-            Domains of Excellence
-          </p>
-          <h2 className="font-heading text-4xl md:text-5xl font-bold tracking-tight text-foreground mb-6">
-            Deep Expertise,{" "}
-            <span className="text-gradient">Measurable Impact</span>
+    <section id="capabilities" className="py-24 md:py-32 bg-secondary/50">
+      <div className="editorial-container">
+        <div className="mb-16 max-w-xl">
+          <p className="label-uppercase mb-3">Capabilities</p>
+          <h2 className="font-heading text-3xl md:text-4xl font-medium text-foreground mb-5">
+            Where Science Meets Strategy
           </h2>
-          <p className="text-muted-foreground text-lg leading-relaxed">
-            Our PhD-led teams combine rigorous domain knowledge with AI-driven
-            analytics to deliver outcomes that redefine what's possible.
+          <p className="font-body text-base text-muted-foreground leading-relaxed">
+            We operate at the intersection of deep technical knowledge and strategic
+            advisory — deploying PhD-caliber talent to solve problems that resist
+            conventional consulting approaches.
           </p>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {domains.map((domain) => (
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-border">
+          {capabilities.map((cap) => (
             <div
-              key={domain.title}
-              className="group card-elevated rounded-lg p-8 transition-all duration-500 hover:border-glow hover:shadow-[var(--shadow-glow)]"
+              key={cap.title}
+              className="bg-background p-10 group cursor-pointer hover:bg-card transition-colors duration-300"
             >
-              <domain.icon className="h-8 w-8 text-primary mb-6 transition-transform duration-500 group-hover:scale-110" />
-              <h3 className="font-heading text-xl font-semibold text-foreground mb-3">
-                {domain.title}
+              <h3 className="font-heading text-xl font-medium text-foreground mb-3 group-hover:text-accent transition-colors duration-300">
+                {cap.title}
               </h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                {domain.description}
+              <p className="font-body text-sm text-muted-foreground leading-relaxed mb-6">
+                {cap.description}
               </p>
+              <div className="flex flex-wrap gap-2 mb-6">
+                {cap.areas.map((area) => (
+                  <span
+                    key={area}
+                    className="font-body text-[10px] uppercase tracking-[0.1em] text-muted-foreground border border-border px-3 py-1"
+                  >
+                    {area}
+                  </span>
+                ))}
+              </div>
+              <span className="font-body text-[11px] font-semibold uppercase tracking-[0.15em] text-foreground/60 flex items-center gap-1 group-hover:text-foreground transition-colors duration-300">
+                Learn More <ArrowUpRight className="h-3 w-3" />
+              </span>
             </div>
           ))}
         </div>
