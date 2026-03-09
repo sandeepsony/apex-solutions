@@ -6,11 +6,13 @@ import CasesSection from "@/components/CasesSection";
 import TeamSection from "@/components/TeamSection";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
+import LogoGallery from "@/components/LogoGallery";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
+      <LogoGallery />
       <HeroSection />
       <DescentSection />
       <RevealSection />
