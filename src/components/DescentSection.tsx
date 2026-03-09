@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import descentCorrosion from "@/assets/descent-corrosion.jpg";
 
 const layers = [
   {
@@ -22,6 +23,7 @@ const layers = [
     description: "Thermal imaging cross-referenced with physics models showed progressive fouling in three exchangers, degrading efficiency by 0.3% per month.",
     detail: "Thermodynamics PhD",
     color: "hsl(0 0% 65%)",
+    showImage: true,
   },
   {
     depth: "Subsea",
@@ -87,44 +89,65 @@ const DescentLayer = ({ layer, index, scrollYProgress, start, end, isLast }: Des
       className="sticky top-0 min-h-screen flex items-center"
     >
       <div className="cinematic-container">
-        <div className="max-w-2xl">
-          {/* Depth indicator */}
-          <div className="flex items-center gap-4 mb-8">
-            <div
-              className="h-px flex-grow max-w-16"
-              style={{ backgroundColor: layer.color }}
-            />
-            <span
-              className="font-mono-data text-[10px] uppercase tracking-[0.3em]"
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="max-w-xl">
+            {/* Depth indicator */}
+            <div className="flex items-center gap-4 mb-8">
+              <div
+                className="h-px flex-grow max-w-16"
+                style={{ backgroundColor: layer.color }}
+              />
+              <span
+                className="font-mono-data text-[10px] uppercase tracking-[0.3em]"
+                style={{ color: layer.color }}
+              >
+                {layer.depth}
+              </span>
+            </div>
+
+            {/* Label */}
+            <h2
+              className="font-mono-data text-xs font-medium uppercase tracking-[0.2em] mb-6"
               style={{ color: layer.color }}
             >
-              {layer.depth}
-            </span>
+              {layer.label}
+            </h2>
+
+            {/* Description */}
+            <p className={`font-heading text-2xl md:text-3xl leading-relaxed mb-8 ${isLast ? 'text-accent' : 'text-foreground'}`}>
+              {layer.description}
+            </p>
+
+            {/* Expert tag */}
+            <div className="inline-flex items-center gap-3 border border-border px-4 py-2">
+              <div
+                className="h-1.5 w-1.5 rounded-full"
+                style={{ backgroundColor: layer.color }}
+              />
+              <span className="font-mono-data text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+                {layer.detail}
+              </span>
+            </div>
           </div>
 
-          {/* Label */}
-          <h2
-            className="font-mono-data text-xs font-medium uppercase tracking-[0.2em] mb-6"
-            style={{ color: layer.color }}
-          >
-            {layer.label}
-          </h2>
-
-          {/* Description */}
-          <p className={`font-heading text-2xl md:text-3xl leading-relaxed mb-8 ${isLast ? 'text-accent' : 'text-foreground'}`}>
-            {layer.description}
-          </p>
-
-          {/* Expert tag */}
-          <div className="inline-flex items-center gap-3 border border-border px-4 py-2">
-            <div
-              className="h-1.5 w-1.5 rounded-full"
-              style={{ backgroundColor: layer.color }}
-            />
-            <span className="font-mono-data text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-              {layer.detail}
-            </span>
-          </div>
+          {/* Image on specific layers */}
+          {layer.showImage && (
+            <div className="hidden md:block">
+              <div className="relative overflow-hidden">
+                <img
+                  src={descentCorrosion}
+                  alt="Corroded pipe cross-section analysis"
+                  className="w-full h-80 object-cover opacity-70"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-background via-transparent to-background/50" />
+                <div className="absolute bottom-4 left-4">
+                  <span className="font-mono-data text-[8px] uppercase tracking-[0.3em] text-muted-foreground/60">
+                    Cross-section analysis · Sample 03-T
+                  </span>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </motion.div>

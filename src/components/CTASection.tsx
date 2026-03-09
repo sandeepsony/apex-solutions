@@ -27,7 +27,7 @@ const CTASection = () => {
           </p>
 
           <a
-            href="mailto:hello@apexadvisory.com"
+            href="mailto:hello@novaacta.com"
             className="inline-flex items-center gap-3 border border-foreground/20 px-8 py-4 font-mono-data text-[11px] uppercase tracking-[0.2em] text-foreground hover:border-accent hover:text-accent transition-all duration-500 group"
           >
             Start a conversation

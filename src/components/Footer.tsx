@@ -4,7 +4,7 @@ const Footer = () => {
       <div className="cinematic-container">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <span className="font-mono-data text-[9px] uppercase tracking-[0.3em] text-muted-foreground/40">
-            © {new Date().getFullYear()} Apex Advisory
+            © {new Date().getFullYear()} NovaActa
           </span>
           
           <div className="flex gap-8">
