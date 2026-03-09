@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import NovaActaLogo from "@/components/NovaActaLogo";
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -18,9 +19,9 @@ const Navbar = () => {
       }`}
     >
       <div className="cinematic-container">
-        <div className="flex h-16 items-center justify-between">
-          <a href="/" className="font-mono-data text-[10px] uppercase tracking-[0.3em] text-foreground">
-            NovaActa
+        <div className="flex h-20 items-center justify-between">
+          <a href="/">
+            <NovaActaLogo variant="full" size="sm" />
           </a>
 
           <a

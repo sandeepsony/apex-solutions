@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import heroPlatform from "@/assets/hero-platform.jpg";
+import NovaActaLogo, { BrandMark } from "@/components/NovaActaLogo";
 
 const HeroSection = () => {
   return (
@@ -17,6 +18,16 @@ const HeroSection = () => {
       </div>
 
       <div className="cinematic-container relative z-10 text-center">
+        {/* Brand mark as hero element */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.5, delay: 0.2 }}
+          className="flex justify-center mb-10 text-foreground"
+        >
+          <BrandMark size={48} />
+        </motion.div>
+
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
