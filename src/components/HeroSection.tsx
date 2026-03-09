@@ -1,76 +1,87 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import heroImg from "@/assets/hero-oil-platform.jpg";
+import { motion } from "framer-motion";
+import ParticleNetwork from "@/components/ParticleNetwork";
+import AnimatedCounter from "@/components/AnimatedCounter";
 
 const HeroSection = () => {
   return (
-    <section className="pt-20">
-      {/* Full-bleed hero image */}
-      <div className="relative h-[70vh] min-h-[500px] max-h-[800px] overflow-hidden">
-        <img
-          src={heroImg}
-          alt="Industrial engineering at scale"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-foreground/50" />
+    <section className="pt-16 relative">
+      {/* Hero */}
+      <div className="relative min-h-[85vh] flex items-center overflow-hidden grid-bg">
+        <ParticleNetwork />
 
-        <div className="absolute inset-0 flex items-end">
-          <div className="editorial-container w-full pb-16">
-            <div className="max-w-2xl">
-              <p className="label-uppercase text-primary-foreground/70 mb-4 animate-reveal">
-                Data-Driven Engineering Advisory
-              </p>
-              <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-medium leading-[1.1] text-primary-foreground mb-6 animate-reveal-delay-1">
-                You Have the Data.
-                <br />
-                We Have the PhDs.
-              </h1>
-              <p className="font-body text-base text-primary-foreground/80 leading-relaxed max-w-lg mb-8 animate-reveal-delay-2">
-                Engineering-intensive industries sit on vast, untapped data. Our subject-matter
-                expert PhDs turn that data into decisions — solving problems that have resisted
-                conventional approaches for decades.
-              </p>
-              <div className="animate-reveal-delay-3">
-                <Button variant="editorialOutline" size="lg" className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground hover:text-foreground">
-                  See How We Work <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </div>
-            </div>
+        {/* Scan line effect */}
+        <div className="absolute inset-0 scan-line pointer-events-none" />
+
+        <div className="editorial-container relative z-10 py-24">
+          <div className="max-w-3xl">
+            {/* Status indicator */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              className="flex items-center gap-3 mb-8"
+            >
+              <div className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse-dot" />
+              <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-primary">
+                Systems Active — Accepting New Engagements
+              </span>
+            </motion.div>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              className="font-heading text-5xl md:text-6xl lg:text-7xl font-medium leading-[1.05] text-foreground mb-8"
+            >
+              You have the data.
+              <br />
+              <span className="text-primary">We have the PhDs.</span>
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.3 }}
+              className="font-body text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl mb-10"
+            >
+              Engineering-intensive industries generate petabytes of operational data they
+              can't interpret. Our PhD domain experts turn that data into decisions —
+              solving problems that have resisted conventional approaches for decades.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className="flex flex-col sm:flex-row gap-4"
+            >
+              <Button variant="command" size="lg">
+                See How We Work <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+              <Button variant="commandOutline" size="lg">
+                View Case Studies
+              </Button>
+            </motion.div>
           </div>
         </div>
-      </div>
 
-      {/* Value proposition bar */}
-      <div className="border-b border-border bg-secondary/30">
-        <div className="editorial-container py-12 md:py-16">
-          <p className="font-heading text-xl md:text-2xl lg:text-3xl font-medium text-foreground leading-snug max-w-4xl">
-            Every engineering organization generates enormous volumes of operational,
-            sensor, and simulation data. <span className="text-accent-warm">Very few know how to use it.</span> We
-            bridge the gap between raw data and expert judgment — deploying PhDs who
-            understand both the physics and the algorithms.
-          </p>
+        {/* Decorative grid coordinates */}
+        <div className="absolute bottom-6 right-6 font-mono text-[9px] text-muted-foreground/30 hidden md:block">
+          <p>LAT 25.2048 · LON 55.2708</p>
+          <p>NODE: AX-PRIMARY · STATUS: ACTIVE</p>
         </div>
       </div>
 
       {/* Stats bar */}
-      <div className="border-b border-border">
+      <div className="border-y border-border bg-card/50">
         <div className="editorial-container">
-          <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-border">
-            {[
-              { value: "200+", label: "PhD Domain Experts" },
-              { value: "85%", label: "Of Client Data Was Untapped" },
-              { value: "$12B", label: "In Unlocked Value" },
-              { value: "40+", label: "Engineering Disciplines" },
-            ].map((stat) => (
-              <div key={stat.label} className="py-8 px-6 text-center">
-                <p className="font-heading text-3xl md:text-4xl font-medium text-foreground">
-                  {stat.value}
-                </p>
-                <p className="font-body text-[11px] uppercase tracking-[0.15em] text-muted-foreground mt-2">
-                  {stat.label}
-                </p>
-              </div>
-            ))}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-0 divide-x divide-border py-12">
+            <AnimatedCounter end={200} suffix="+" label="PhD Domain Experts" />
+            <AnimatedCounter end={85} suffix="%" label="Of Client Data Untapped" />
+            <AnimatedCounter end={12} prefix="$" suffix="B" label="Value Unlocked" />
+            <AnimatedCounter end={40} suffix="+" label="Engineering Disciplines" />
           </div>
         </div>
       </div>
