@@ -73,8 +73,41 @@ const BrandGallery = () => {
           </p>
         </div>
 
-        {/* Wordmark Options */}
-        <div className="label-mono mb-4">Choose Your Wordmark (1-12)</div>
+        {/* Technical Monospace Section - White & Gold */}
+        <div className="label-mono mb-4 text-accent">Technical Monospace Collection — White & Gold</div>
+        <div className="divider-line mb-8" />
+        
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-16">
+          {techWordmarks.map((wm) => (
+            <div
+              key={wm.id}
+              className="bg-card border border-accent/30 group hover:border-accent transition-all duration-500 overflow-hidden shadow-lg"
+            >
+              {/* Wordmark display */}
+              <div className="aspect-[2/1] flex items-center justify-center p-4 bg-black">
+                <img
+                  src={wm.src}
+                  alt={`Technical Wordmark ${wm.name}`}
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              {/* Info */}
+              <div className="p-4 border-t border-accent/30 bg-gradient-to-br from-background to-accent/5">
+                <div className="flex items-center justify-between">
+                  <span className="font-mono-data text-lg font-bold text-accent">
+                    #{wm.name}
+                  </span>
+                  <span className="font-body text-xs text-muted-foreground">
+                    {wm.desc}
+                  </span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Original Wordmark Options */}
+        <div className="label-mono mb-4">Other Wordmark Styles (1-12)</div>
         <div className="divider-line mb-12" />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
