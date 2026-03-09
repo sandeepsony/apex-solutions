@@ -1,27 +1,27 @@
 const steps = [
   {
     number: "01",
-    title: "Scoping & Diagnosis",
+    title: "Data & Domain Audit",
     description:
-      "We deploy senior PhD consultants to rigorously define the problem space, map stakeholder landscapes, and identify the highest-leverage intervention points.",
+      "We embed PhD-level specialists in your operations to map the data you're generating, assess its quality, and identify the highest-value problems it can solve — problems your teams know exist but can't quantify.",
   },
   {
     number: "02",
-    title: "Analytical Modeling",
+    title: "Problem Formulation",
     description:
-      "Our proprietary AI frameworks and domain-specific models generate insights that are both computationally rigorous and operationally actionable.",
+      "Most organizations fail at AI not because of bad data, but because of poorly framed problems. Our domain experts translate engineering challenges into precise analytical questions that data can actually answer.",
   },
   {
     number: "03",
-    title: "Solution Architecture",
+    title: "Model & Solution Engineering",
     description:
-      "We design bespoke solutions — from digital twins to optimization algorithms — stress-tested against real-world constraints and failure modes.",
+      "We build bespoke analytical solutions — from physics-informed machine learning to optimization algorithms — designed by people who understand both the math and the machinery.",
   },
   {
     number: "04",
-    title: "Implementation & Transfer",
+    title: "Operationalization & Transfer",
     description:
-      "Embedded teams drive execution with full knowledge transfer, ensuring your organization retains capability long after our engagement concludes.",
+      "Solutions are embedded into your workflows with full knowledge transfer. We don't leave behind black boxes — we leave behind capabilities your engineers can own, maintain, and extend.",
   },
 ];
 
@@ -32,14 +32,14 @@ const ApproachSection = () => {
         <div className="grid lg:grid-cols-12 gap-16">
           {/* Left column */}
           <div className="lg:col-span-4">
-            <p className="label-uppercase mb-3">Our Approach</p>
+            <p className="label-uppercase mb-3">How We Work</p>
             <h2 className="font-heading text-3xl md:text-4xl font-medium text-foreground mb-5">
-              Rigor Without Compromise
+              From Raw Data to Real Decisions
             </h2>
             <p className="font-body text-base text-muted-foreground leading-relaxed">
-              Every engagement follows a disciplined methodology refined across hundreds
-              of complex technical engagements. We don't template our thinking — we
-              calibrate it to your reality.
+              Our methodology is built for engineering organizations that have invested
+              in data infrastructure but haven't yet realized the return. We close the
+              gap between what your data contains and what your teams can act on.
             </p>
           </div>
 
@@ -49,7 +49,7 @@ const ApproachSection = () => {
               {steps.map((step) => (
                 <div key={step.number} className="group py-10 first:pt-0">
                   <div className="flex gap-8">
-                    <span className="font-heading text-4xl font-medium text-border group-hover:text-accent transition-colors duration-500">
+                    <span className="font-heading text-4xl font-medium text-border group-hover:text-accent transition-colors duration-500 shrink-0">
                       {step.number}
                     </span>
                     <div>

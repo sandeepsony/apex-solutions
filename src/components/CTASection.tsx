@@ -7,14 +7,15 @@ const CTASection = () => {
       <div className="editorial-container">
         <div className="max-w-2xl">
           <p className="font-body text-[11px] font-semibold uppercase tracking-[0.2em] text-primary-foreground/50 mb-4">
-            Work With Us
+            Start the Conversation
           </p>
           <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-medium text-primary-foreground leading-[1.15] mb-6">
-            Your most complex problems deserve world-class minds.
+            Your data holds answers your teams can't yet see. Our PhDs can.
           </h2>
           <p className="font-body text-base text-primary-foreground/70 leading-relaxed mb-10 max-w-lg">
-            Whether you're navigating energy transition, scaling digital twins, or
-            optimizing industrial operations — our PhD-led teams are ready.
+            Whether it's predictive maintenance in manufacturing, reservoir optimization
+            in oil & gas, or climate risk quantification — we deploy the domain experts
+            who can turn your data into your greatest competitive advantage.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Button

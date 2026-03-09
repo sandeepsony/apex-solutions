@@ -6,24 +6,24 @@ import insightDigitalTwin from "@/assets/insight-digital-twin.jpg";
 const insights = [
   {
     image: insightManufacturing,
-    category: "Advanced Manufacturing",
-    title: "How AI-Driven Predictive Maintenance Is Reshaping Industrial Operations",
+    category: "Manufacturing Intelligence",
+    title: "Why 73% of Industrial AI Projects Fail — and What PhD-Led Teams Do Differently",
     description:
-      "Our analysis of 120 manufacturing facilities reveals that PhD-led AI implementation yields 3.2x greater efficiency gains than traditional approaches.",
+      "Most AI initiatives in manufacturing stall because data scientists lack process knowledge. Our analysis of 120 plants shows that domain-expert-led teams achieve 3.2x higher deployment success rates.",
   },
   {
     image: insightClimate,
-    category: "Climate & Energy Transition",
-    title: "Quantifying Climate Risk: A New Framework for Energy Companies",
+    category: "Energy & Climate Data",
+    title: "From Terabytes to Decisions: Making Sense of Operational Data in Energy Transition",
     description:
-      "A rigorous, physics-based methodology for assessing portfolio-level climate exposure across upstream and midstream assets.",
+      "Energy companies sit on decades of production, weather, and emissions data. We outline a framework for converting this data into quantified transition strategies.",
   },
   {
     image: insightDigitalTwin,
-    category: "Digital Twins & BIM",
-    title: "The Digital Twin Maturity Model: From Visualization to Autonomous Decision-Making",
+    category: "Digital Twins",
+    title: "The Missing Layer in Digital Twins: Domain Expertise Between Data and Physics",
     description:
-      "Our five-stage framework helps organizations benchmark their digital twin capabilities and chart a path to operational intelligence.",
+      "Digital twins fail when they're built by data teams alone. Our maturity model shows how PhD-level domain knowledge is the critical ingredient between raw IoT feeds and actionable simulation.",
   },
 ];
 
@@ -33,9 +33,9 @@ const InsightsSection = () => {
       <div className="editorial-container">
         <div className="flex items-end justify-between mb-16">
           <div>
-            <p className="label-uppercase mb-3">Latest Insights</p>
+            <p className="label-uppercase mb-3">Perspectives</p>
             <h2 className="font-heading text-3xl md:text-4xl font-medium text-foreground">
-              Ideas That Move Industries
+              Thinking at the Intersection of Data & Domain
             </h2>
           </div>
           <a
