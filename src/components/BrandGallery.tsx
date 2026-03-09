@@ -141,10 +141,10 @@ const BrandGallery = () => {
 
         <div className="mt-16 text-center border-t border-border pt-12">
           <p className="font-heading text-2xl text-foreground mb-2">
-            Which wordmark do you like?
+            Which technical wordmark do you like?
           </p>
           <p className="font-body text-sm text-muted-foreground">
-            Just tell me the number (1-12) and I'll pair it with your gold compass
+            Tell me T1-T6 for technical monospace, or 1-12 for other styles
           </p>
         </div>
       </div>
