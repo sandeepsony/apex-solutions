@@ -1,11 +1,53 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Lock } from "lucide-react";
+import { Lock, AlertCircle } from "lucide-react";
 import Wordmark from "@/components/Wordmark";
 import logoGold from "@/assets/logo-compass-gold.png";
 
+const BLOCKED_DOMAINS = [
+  "gmail.com", "googlemail.com", "yahoo.com", "yahoo.co.in", "yahoo.co.uk",
+  "hotmail.com", "outlook.com", "live.com", "msn.com",
+  "protonmail.com", "proton.me", "pm.me",
+  "aol.com", "icloud.com", "me.com", "mac.com",
+  "mail.com", "zoho.com", "yandex.com", "gmx.com", "gmx.net",
+  "tutanota.com", "tutamail.com", "tuta.io",
+  "fastmail.com", "hushmail.com", "inbox.com",
+  "rediffmail.com", "qq.com", "163.com", "126.com",
+];
+
 const StealthOverlay = () => {
   const [dismissed, setDismissed] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [designation, setDesignation] = useState("");
+  const [error, setError] = useState("");
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setError("");
+
+    if (!name.trim() || !email.trim() || !designation.trim()) {
+      setError("All fields are required.");
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setError("Please enter a valid email address.");
+      return;
+    }
+
+    const domain = email.split("@")[1]?.toLowerCase();
+    if (BLOCKED_DOMAINS.includes(domain)) {
+      setError("Please use your organization email. Generic email providers are not accepted.");
+      return;
+    }
+
+    setDismissed(true);
+  };
+
+  const inputClass =
+    "w-full bg-transparent border border-accent/20 px-3 py-2.5 font-body text-sm text-foreground placeholder:text-muted-foreground/40 focus:outline-none focus:border-accent/60 transition-colors";
 
   return (
     <AnimatePresence>
@@ -17,10 +59,9 @@ const StealthOverlay = () => {
           transition={{ duration: 0.5 }}
           className="fixed inset-0 z-[100] flex items-center justify-center"
         >
-          {/* Full-screen click blocker — clear, no blur, no tint */}
+          {/* Full-screen click blocker */}
           <div className="absolute inset-0" />
 
-          {/* Dialog box — this blocks clicks only on itself */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -28,59 +69,81 @@ const StealthOverlay = () => {
             transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
             className="relative z-10 max-w-md w-[90%] border border-accent/30 bg-card/95 backdrop-blur-xl shadow-2xl"
           >
-            {/* Top accent line */}
             <div className="h-px w-full bg-gradient-to-r from-transparent via-accent to-transparent" />
 
             <div className="p-8 md:p-10">
-              {/* Close button */}
-              <button
-                onClick={() => setDismissed(true)}
-                className="absolute top-4 right-4 p-1.5 text-muted-foreground hover:text-accent transition-colors"
-                aria-label="Dismiss"
-              >
-                <X className="w-4 h-4" />
-              </button>
-
               {/* Logo */}
-              <div className="flex justify-center mb-6">
-                <img src={logoGold} alt="" className="w-14 h-14 object-contain" />
+              <div className="flex justify-center mb-4">
+                <img src={logoGold} alt="" className="w-12 h-12 object-contain" />
               </div>
 
               {/* Wordmark */}
-              <div className="flex justify-center mb-6">
+              <div className="flex justify-center mb-4">
                 <Wordmark size="lg" />
               </div>
 
               {/* Stealth badge */}
-              <div className="flex items-center justify-center gap-2 mb-6">
+              <div className="flex items-center justify-center gap-2 mb-4">
                 <Lock className="w-3 h-3 text-accent" />
                 <span className="font-mono-data text-[10px] uppercase tracking-[0.3em] text-accent">
                   Stealth Mode
                 </span>
               </div>
 
-              {/* Message */}
-              <p className="font-body text-sm text-muted-foreground text-center leading-relaxed mb-6">
-                We're currently operating in stealth. Our team of 14 PhDs is working on 
-                groundbreaking engineering intelligence solutions. This preview is confidential.
+              <p className="font-body text-sm text-muted-foreground text-center leading-relaxed mb-5">
+                Access is restricted to verified professionals. Please enter your
+                organization credentials to continue.
               </p>
 
-              <div className="divider-line mx-auto mb-6" />
+              <div className="divider-line mx-auto mb-5" />
 
-              <p className="font-mono-data text-[9px] uppercase tracking-[0.2em] text-muted-foreground/50 text-center">
-                Scroll to explore · All content is under NDA
+              {/* Form */}
+              <form onSubmit={handleSubmit} className="space-y-3">
+                <input
+                  type="text"
+                  placeholder="Full Name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  className={inputClass}
+                  maxLength={100}
+                />
+                <input
+                  type="text"
+                  placeholder="Designation / Title"
+                  value={designation}
+                  onChange={(e) => setDesignation(e.target.value)}
+                  className={inputClass}
+                  maxLength={100}
+                />
+                <input
+                  type="email"
+                  placeholder="Organization Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className={inputClass}
+                  maxLength={255}
+                />
+
+                {error && (
+                  <div className="flex items-start gap-2 text-destructive">
+                    <AlertCircle className="w-3.5 h-3.5 mt-0.5 shrink-0" />
+                    <span className="font-mono-data text-[10px] leading-relaxed">{error}</span>
+                  </div>
+                )}
+
+                <button
+                  type="submit"
+                  className="w-full border border-accent/40 py-3 font-mono-data text-[10px] uppercase tracking-[0.2em] text-accent hover:bg-accent hover:text-accent-foreground transition-all duration-300"
+                >
+                  Request Access
+                </button>
+              </form>
+
+              <p className="mt-4 font-mono-data text-[9px] uppercase tracking-[0.2em] text-muted-foreground/50 text-center">
+                Organization email required · All content is under NDA
               </p>
-
-              {/* Dismiss button */}
-              <button
-                onClick={() => setDismissed(true)}
-                className="mt-6 w-full border border-accent/40 py-3 font-mono-data text-[10px] uppercase tracking-[0.2em] text-accent hover:bg-accent hover:text-accent-foreground transition-all duration-300"
-              >
-                Enter Preview
-              </button>
             </div>
 
-            {/* Bottom accent line */}
             <div className="h-px w-full bg-gradient-to-r from-transparent via-accent to-transparent" />
           </motion.div>
         </motion.div>
