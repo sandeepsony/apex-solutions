@@ -1,10 +1,18 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-import NovaActaLogo from "@/components/NovaActaLogo";
+import { Link, useLocation } from "react-router-dom";
+import logoGold from "@/assets/logo-compass-gold.png";
+import wordmark from "@/assets/wordmark-tech-6.png";
+
+const navLinks = [
+  { label: "Home", path: "/" },
+  { label: "Case Studies", path: "/case-studies" },
+];
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 100);
@@ -20,17 +28,37 @@ const Navbar = () => {
     >
       <div className="cinematic-container">
         <div className="flex h-20 items-center justify-between">
-          <a href="/">
-            <NovaActaLogo variant="full" size="sm" />
-          </a>
+          {/* Logo */}
+          <Link to="/" className="flex items-center gap-3">
+            <img src={logoGold} alt="NovaActa" className="w-8 h-8 object-contain" />
+            <img src={wordmark} alt="NOVA·ACTA" className="h-4 object-contain hidden sm:block" />
+          </Link>
 
-          <a
-            href="mailto:hello@novaacta.com"
-            className="hidden md:block font-mono-data text-[10px] uppercase tracking-[0.2em] text-muted-foreground hover:text-foreground transition-colors duration-300"
-          >
-            hello@novaacta.com
-          </a>
+          {/* Desktop nav */}
+          <div className="hidden md:flex items-center gap-8">
+            {navLinks.map((link) => (
+              <Link
+                key={link.path}
+                to={link.path}
+                className={`font-mono-data text-[10px] uppercase tracking-[0.2em] transition-colors duration-300 ${
+                  location.pathname === link.path
+                    ? "text-accent"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                {link.label}
+              </Link>
+            ))}
+            <div className="w-px h-4 bg-border" />
+            <a
+              href="mailto:hello@novaacta.com"
+              className="font-mono-data text-[10px] uppercase tracking-[0.2em] text-muted-foreground hover:text-accent transition-colors duration-300"
+            >
+              Contact
+            </a>
+          </div>
 
+          {/* Mobile toggle */}
           <button
             className="md:hidden text-foreground"
             onClick={() => setMobileOpen(!mobileOpen)}
@@ -43,13 +71,25 @@ const Navbar = () => {
 
       {mobileOpen && (
         <div className="md:hidden bg-background border-b border-border">
-          <div className="cinematic-container py-6">
+          <div className="cinematic-container py-6 space-y-4">
+            {navLinks.map((link) => (
+              <Link
+                key={link.path}
+                to={link.path}
+                className={`block font-mono-data text-[11px] uppercase tracking-[0.2em] ${
+                  location.pathname === link.path ? "text-accent" : "text-muted-foreground"
+                }`}
+                onClick={() => setMobileOpen(false)}
+              >
+                {link.label}
+              </Link>
+            ))}
             <a
               href="mailto:hello@novaacta.com"
-              className="font-mono-data text-[10px] uppercase tracking-[0.2em] text-muted-foreground"
+              className="block font-mono-data text-[11px] uppercase tracking-[0.2em] text-muted-foreground"
               onClick={() => setMobileOpen(false)}
             >
-              hello@novaacta.com
+              Contact
             </a>
           </div>
         </div>
