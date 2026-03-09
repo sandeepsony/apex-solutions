@@ -7,6 +7,7 @@ import caseWindfarm from "@/assets/case-windfarm.jpg";
 import caseOffshore from "@/assets/case-offshore.jpg";
 import caseGearsystem from "@/assets/case-gearsystem.jpg";
 import casePipeline from "@/assets/case-pipeline.jpg";
+import caseWastewater from "@/assets/case-wastewater.jpg";
 
 const cases = [
   {
