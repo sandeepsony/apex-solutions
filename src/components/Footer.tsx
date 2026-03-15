@@ -25,13 +25,9 @@ const Footer = () => {
             </Link>
           </div>
 
-          <div className="flex gap-8">
-            {["London", "Houston", "Singapore"].map((city) => (
-              <span key={city} className="font-mono-data text-[9px] uppercase tracking-[0.2em] text-muted-foreground/30">
-                {city}
-              </span>
-            ))}
-          </div>
+          <span className="font-mono-data text-[9px] uppercase tracking-[0.2em] text-muted-foreground/30">
+            Palo Alto
+          </span>
         </div>
       </div>
     </footer>
