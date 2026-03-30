@@ -212,6 +212,7 @@ const caseStudies: CaseStudy[] = [
 /* ── Sparkline Card ───────────────────────────────── */
 
 const SparklineCard = ({ sensor, color }: { sensor: SensorData; color: string }) => {
+  const [expanded, setExpanded] = useState(false);
   const chartData = useMemo(
     () => sensor.data.map((v, i) => ({ i, v })),
     [sensor.data]
@@ -219,44 +220,141 @@ const SparklineCard = ({ sensor, color }: { sensor: SensorData; color: string })
 
   const max = Math.max(...sensor.data);
   const min = Math.min(...sensor.data);
+  const avg = sensor.data.reduce((a, b) => a + b, 0) / sensor.data.length;
   const current = sensor.data[sensor.data.length - 1];
   const prev = sensor.data[sensor.data.length - 2];
   const delta = current - prev;
   const isSpike = Math.abs(delta) > (max - min) * 0.3;
 
   return (
-    <div className="bg-secondary/30 border border-border/50 rounded-sm p-3 hover:border-border transition-colors group">
-      <div className="flex items-center justify-between mb-2">
-        <span className="font-mono-data text-[8px] uppercase tracking-[0.12em] text-muted-foreground truncate mr-2">
-          {sensor.name}
-        </span>
-        <span className={`font-mono-data text-[9px] font-semibold ${isSpike ? "text-destructive" : "text-foreground"}`}>
-          {current}
-        </span>
+    <>
+      <div
+        onClick={() => setExpanded(true)}
+        className="bg-secondary/30 border border-border/50 rounded-sm p-3 hover:border-border transition-colors group cursor-pointer"
+      >
+        <div className="flex items-center justify-between mb-2">
+          <span className="font-mono-data text-[8px] uppercase tracking-[0.12em] text-muted-foreground truncate mr-2">
+            {sensor.name}
+          </span>
+          <span className={`font-mono-data text-[9px] font-semibold ${isSpike ? "text-destructive" : "text-foreground"}`}>
+            {current}
+          </span>
+        </div>
+        <div className="h-10">
+          <ResponsiveContainer width="100%" height="100%">
+            <LineChart data={chartData} margin={{ top: 2, right: 2, bottom: 2, left: 2 }}>
+              <Line type="monotone" dataKey="v" stroke={color} strokeWidth={1.2} dot={false} strokeOpacity={0.7} />
+            </LineChart>
+          </ResponsiveContainer>
+        </div>
+        <div className="flex items-center justify-between mt-1.5">
+          <span className="font-mono-data text-[7px] text-muted-foreground">
+            {min.toFixed(1)} — {max.toFixed(1)}
+          </span>
+          <span className={`font-mono-data text-[7px] ${delta > 0 ? "text-destructive" : "text-accent"}`}>
+            {delta > 0 ? "▲" : "▼"} {Math.abs(delta).toFixed(1)}
+          </span>
+        </div>
       </div>
-      <div className="h-10">
-        <ResponsiveContainer width="100%" height="100%">
-          <LineChart data={chartData} margin={{ top: 2, right: 2, bottom: 2, left: 2 }}>
-            <Line
-              type="monotone"
-              dataKey="v"
-              stroke={color}
-              strokeWidth={1.2}
-              dot={false}
-              strokeOpacity={0.7}
-            />
-          </LineChart>
-        </ResponsiveContainer>
-      </div>
-      <div className="flex items-center justify-between mt-1.5">
-        <span className="font-mono-data text-[7px] text-muted-foreground">
-          {min.toFixed(1)} — {max.toFixed(1)}
-        </span>
-        <span className={`font-mono-data text-[7px] ${delta > 0 ? "text-destructive" : "text-accent"}`}>
-          {delta > 0 ? "▲" : "▼"} {Math.abs(delta).toFixed(1)}
-        </span>
-      </div>
-    </div>
+
+      {/* Expanded overlay */}
+      <AnimatePresence>
+        {expanded && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-background/80 backdrop-blur-sm"
+            onClick={() => setExpanded(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+              className="bg-card border border-border rounded-sm shadow-2xl w-[90vw] max-w-2xl p-6"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex items-center justify-between mb-4">
+                <span className="font-mono-data text-[10px] uppercase tracking-[0.15em] text-muted-foreground">
+                  {sensor.name}
+                </span>
+                <button
+                  onClick={() => setExpanded(false)}
+                  className="font-mono-data text-[10px] text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  ✕ CLOSE
+                </button>
+              </div>
+
+              {/* Large chart */}
+              <div className="h-56 mb-5">
+                <ResponsiveContainer width="100%" height="100%">
+                  <AreaChart data={chartData} margin={{ top: 10, right: 10, bottom: 10, left: 10 }}>
+                    <defs>
+                      <linearGradient id="expandGrad" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stopColor={color} stopOpacity={0.3} />
+                        <stop offset="100%" stopColor={color} stopOpacity={0.02} />
+                      </linearGradient>
+                    </defs>
+                    <XAxis
+                      dataKey="i"
+                      tick={{ fontSize: 9, fill: "hsl(var(--muted-foreground))" }}
+                      axisLine={{ stroke: "hsl(var(--border))" }}
+                      tickLine={false}
+                    />
+                    <YAxis
+                      tick={{ fontSize: 9, fill: "hsl(var(--muted-foreground))" }}
+                      axisLine={false}
+                      tickLine={false}
+                      domain={[Math.floor(min * 0.9), Math.ceil(max * 1.1)]}
+                      width={40}
+                    />
+                    <Tooltip
+                      contentStyle={{
+                        backgroundColor: "hsl(var(--card))",
+                        border: "1px solid hsl(var(--border))",
+                        borderRadius: "2px",
+                        fontSize: "10px",
+                        fontFamily: "monospace",
+                      }}
+                      formatter={(value: number) => [value.toFixed(2), sensor.name]}
+                    />
+                    <Area
+                      type="monotone"
+                      dataKey="v"
+                      stroke={color}
+                      strokeWidth={2}
+                      fill="url(#expandGrad)"
+                      dot={{ r: 2.5, fill: color, strokeWidth: 0 }}
+                      activeDot={{ r: 4, fill: color }}
+                    />
+                  </AreaChart>
+                </ResponsiveContainer>
+              </div>
+
+              {/* Stats row */}
+              <div className="grid grid-cols-4 gap-3">
+                {[
+                  { label: "Current", value: current.toFixed(2) },
+                  { label: "Average", value: avg.toFixed(2) },
+                  { label: "Min", value: min.toFixed(2) },
+                  { label: "Max", value: max.toFixed(2) },
+                ].map((s) => (
+                  <div key={s.label} className="bg-secondary/30 border border-border/50 rounded-sm p-3 text-center">
+                    <div className="font-heading text-base text-foreground">{s.value}</div>
+                    <div className="font-mono-data text-[7px] uppercase tracking-[0.15em] text-muted-foreground mt-1">
+                      {s.label}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 };
 
