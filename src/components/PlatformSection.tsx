@@ -1,5 +1,5 @@
 import { useState, useRef, useMemo } from "react";
-import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import {
@@ -400,8 +400,6 @@ const RiskBar = ({ before, after, color }: { before: number; after: number; colo
 const PlatformSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0.5]);
 
   const activeCase = caseStudies[activeIndex];
 
@@ -411,21 +409,9 @@ const PlatformSection = () => {
   );
 
   return (
-    <section ref={ref} className="py-28 md:py-40 border-t border-border overflow-hidden">
-      <motion.div style={{ opacity }} className="cinematic-container">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <div className="label-mono mb-6">Our Platform</div>
-          <div className="divider-line mx-auto mb-10" />
-          <h2 className="font-heading text-3xl md:text-5xl font-medium text-foreground leading-[1.15] max-w-3xl mx-auto">
-            Seven investigations.{" "}
-            <span className="italic text-accent">One platform.</span>
-          </h2>
-          <p className="font-body text-sm md:text-base text-muted-foreground max-w-lg mx-auto mt-6 leading-relaxed">
-            Every case study tracked, analyzed, and resolved through our integrated
-            engineering intelligence platform.
-          </p>
-        </div>
+    <section ref={ref} className="py-16 md:py-24 overflow-hidden">
+      <div className="cinematic-container">
+        {/* Platform mock */}
 
         {/* Platform mock */}
         <div className="max-w-6xl mx-auto">
@@ -646,7 +632,7 @@ const PlatformSection = () => {
             style={{ backgroundColor: activeCase.color }}
           />
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 };

@@ -6,6 +6,7 @@ import logoGold from "@/assets/logo-compass-gold.png";
 
 const navLinks = [
   { label: "Home", path: "/" },
+  { label: "Platform", path: "/platform" },
   { label: "Case Studies", path: "/case-studies" },
 ];
 

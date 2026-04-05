@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { TimeThemeProvider } from "@/hooks/useTimeTheme";
 import Index from "./pages/Index";
+import Platform from "./pages/Platform";
 import CaseStudies from "./pages/CaseStudies";
 import NotFound from "./pages/NotFound";
 
@@ -19,6 +20,7 @@ const App = () => (
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/platform" element={<Platform />} />
             <Route path="/case-studies" element={<CaseStudies />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
