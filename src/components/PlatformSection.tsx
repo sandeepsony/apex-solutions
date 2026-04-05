@@ -400,8 +400,6 @@ const RiskBar = ({ before, after, color }: { before: number; after: number; colo
 const PlatformSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0.5]);
 
   const activeCase = caseStudies[activeIndex];
 
