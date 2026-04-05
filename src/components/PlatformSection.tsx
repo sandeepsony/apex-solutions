@@ -632,7 +632,7 @@ const PlatformSection = () => {
             style={{ backgroundColor: activeCase.color }}
           />
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 };
