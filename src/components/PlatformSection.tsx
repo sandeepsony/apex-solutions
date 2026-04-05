@@ -409,12 +409,8 @@ const PlatformSection = () => {
   );
 
   return (
-    <section ref={ref} className="py-28 md:py-40 border-t border-border overflow-hidden">
-      <motion.div style={{ opacity }} className="cinematic-container">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <div className="label-mono mb-6">Our Platform</div>
-          <div className="divider-line mx-auto mb-10" />
+    <section ref={ref} className="py-16 md:py-24 overflow-hidden">
+      <div className="cinematic-container">
           <h2 className="font-heading text-3xl md:text-5xl font-medium text-foreground leading-[1.15] max-w-3xl mx-auto">
             Seven investigations.{" "}
             <span className="italic text-accent">One platform.</span>
