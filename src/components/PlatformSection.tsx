@@ -411,15 +411,7 @@ const PlatformSection = () => {
   return (
     <section ref={ref} className="py-16 md:py-24 overflow-hidden">
       <div className="cinematic-container">
-          <h2 className="font-heading text-3xl md:text-5xl font-medium text-foreground leading-[1.15] max-w-3xl mx-auto">
-            Seven investigations.{" "}
-            <span className="italic text-accent">One platform.</span>
-          </h2>
-          <p className="font-body text-sm md:text-base text-muted-foreground max-w-lg mx-auto mt-6 leading-relaxed">
-            Every case study tracked, analyzed, and resolved through our integrated
-            engineering intelligence platform.
-          </p>
-        </div>
+        {/* Platform mock */}
 
         {/* Platform mock */}
         <div className="max-w-6xl mx-auto">
