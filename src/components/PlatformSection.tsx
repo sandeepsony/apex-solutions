@@ -507,10 +507,10 @@ const SparklineCard = ({ sensor, color }: { sensor: SensorData; color: string })
         className="bg-secondary/30 border border-border/50 rounded-sm p-3 hover:border-border transition-colors group cursor-pointer"
       >
         <div className="flex items-center justify-between mb-2">
-          <span className="font-mono-data text-[12px] uppercase tracking-[0.12em] text-muted-foreground truncate mr-2">
+          <span className="font-mono-data text-[11px] uppercase tracking-[0.12em] text-muted-foreground truncate mr-2">
             {sensor.name}
           </span>
-          <span className={`font-mono-data text-[11px] font-semibold ${isSpike ? "text-destructive" : "text-foreground"}`}>
+          <span className={`font-mono-data text-[10px] font-semibold ${isSpike ? "text-destructive" : "text-foreground"}`}>
             {current}
           </span>
         </div>
@@ -518,10 +518,10 @@ const SparklineCard = ({ sensor, color }: { sensor: SensorData; color: string })
           {renderMiniChart(sensor.chartType, chartData, color)}
         </div>
         <div className="flex items-center justify-between mt-1.5">
-          <span className="font-mono-data text-[11px] text-muted-foreground">
+          <span className="font-mono-data text-[10px] text-muted-foreground">
             {min.toFixed(1)} — {max.toFixed(1)}
           </span>
-          <span className={`font-mono-data text-[11px] ${delta > 0 ? "text-destructive" : "text-accent"}`}>
+          <span className={`font-mono-data text-[10px] ${delta > 0 ? "text-destructive" : "text-accent"}`}>
             {delta > 0 ? "▲" : "▼"} {Math.abs(delta).toFixed(1)}
           </span>
         </div>
@@ -547,12 +547,12 @@ const SparklineCard = ({ sensor, color }: { sensor: SensorData; color: string })
               onClick={(e) => e.stopPropagation()}
             >
               <div className="flex items-center justify-between mb-4">
-                <span className="font-mono-data text-[12px] uppercase tracking-[0.15em] text-muted-foreground">
+                <span className="font-mono-data text-[11px] uppercase tracking-[0.15em] text-muted-foreground">
                   {sensor.name}
                 </span>
                 <button
                   onClick={() => setExpanded(false)}
-                  className="font-mono-data text-[12px] text-muted-foreground hover:text-foreground transition-colors"
+                  className="font-mono-data text-[11px] text-muted-foreground hover:text-foreground transition-colors"
                 >
                   ✕ CLOSE
                 </button>
@@ -593,7 +593,7 @@ const SparklineCard = ({ sensor, color }: { sensor: SensorData; color: string })
                 ].map((s) => (
                   <div key={s.label} className="bg-secondary/30 border border-border/50 rounded-sm p-3 text-center">
                     <div className="font-heading text-base text-foreground">{s.value}</div>
-                    <div className="font-mono-data text-[11px] uppercase tracking-[0.15em] text-muted-foreground mt-1">
+                    <div className="font-mono-data text-[10px] uppercase tracking-[0.15em] text-muted-foreground mt-1">
                       {s.label}
                     </div>
                   </div>
@@ -613,8 +613,8 @@ const RiskBar = ({ before, after, color }: { before: number; after: number; colo
   <div className="flex items-center gap-3">
     <div className="flex-1">
       <div className="flex items-center justify-between mb-1">
-        <span className="font-mono-data text-[11px] uppercase tracking-[0.15em] text-muted-foreground">Risk Before</span>
-        <span className="font-mono-data text-[11px] text-destructive">{(before * 100).toFixed(0)}%</span>
+        <span className="font-mono-data text-[10px] uppercase tracking-[0.15em] text-muted-foreground">Risk Before</span>
+        <span className="font-mono-data text-[10px] text-destructive">{(before * 100).toFixed(0)}%</span>
       </div>
       <div className="h-1 bg-secondary rounded-full overflow-hidden">
         <motion.div
@@ -625,11 +625,11 @@ const RiskBar = ({ before, after, color }: { before: number; after: number; colo
         />
       </div>
     </div>
-    <div className="font-mono-data text-[12px] text-muted-foreground">→</div>
+    <div className="font-mono-data text-[11px] text-muted-foreground">→</div>
     <div className="flex-1">
       <div className="flex items-center justify-between mb-1">
-        <span className="font-mono-data text-[11px] uppercase tracking-[0.15em] text-muted-foreground">Risk After</span>
-        <span className="font-mono-data text-[11px]" style={{ color }}>{(after * 100).toFixed(0)}%</span>
+        <span className="font-mono-data text-[10px] uppercase tracking-[0.15em] text-muted-foreground">Risk After</span>
+        <span className="font-mono-data text-[10px]" style={{ color }}>{(after * 100).toFixed(0)}%</span>
       </div>
       <div className="h-1 bg-secondary rounded-full overflow-hidden">
         <motion.div
@@ -667,12 +667,12 @@ const PlatformSection = () => {
               <div className="w-2.5 h-2.5 rounded-full bg-destructive/60" />
               <div className="w-2.5 h-2.5 rounded-full bg-accent/60" />
               <div className="w-2.5 h-2.5 rounded-full bg-muted-foreground/30" />
-              <span className="ml-3 font-mono-data text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
+              <span className="ml-3 font-mono-data text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
                 NovaActa Platform — Case Monitor
               </span>
               <div className="ml-auto flex items-center gap-2">
                 <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-                <span className="font-mono-data text-[12px] text-muted-foreground">7 CASES TRACKED</span>
+                <span className="font-mono-data text-[11px] text-muted-foreground">7 CASES TRACKED</span>
               </div>
             </div>
 
@@ -682,13 +682,13 @@ const PlatformSection = () => {
                 <button
                   key={cs.id}
                   onClick={() => setActiveIndex(i)}
-                  className={`relative px-4 py-2.5 font-mono-data text-[11px] uppercase tracking-[0.15em] transition-all duration-300 whitespace-nowrap flex-shrink-0 ${
+                  className={`relative px-4 py-2.5 font-mono-data text-[10px] uppercase tracking-[0.15em] transition-all duration-300 whitespace-nowrap flex-shrink-0 ${
                     i === activeIndex
                       ? "text-foreground bg-card"
                       : "text-muted-foreground hover:text-foreground/70"
                   }`}
                 >
-                  <span className="mr-2 text-[12px]" style={{ color: i === activeIndex ? cs.color : undefined }}>
+                  <span className="mr-2 text-[11px]" style={{ color: i === activeIndex ? cs.color : undefined }}>
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   {cs.shortTitle}
@@ -715,13 +715,13 @@ const PlatformSection = () => {
                 {/* Case header */}
                 <div className="flex items-center gap-3 px-5 py-4 border-b border-border/50 bg-secondary/20">
                   <div className="w-2 h-2 rounded-full" style={{ backgroundColor: activeCase.color }} />
-                  <span className="font-mono-data text-[11px] uppercase tracking-[0.2em]" style={{ color: activeCase.color }}>
+                  <span className="font-mono-data text-[10px] uppercase tracking-[0.2em]" style={{ color: activeCase.color }}>
                     {activeCase.title}
                   </span>
                   <span className="font-heading text-sm md:text-base text-foreground ml-2">
                     {activeCase.headline}
                   </span>
-                  <span className={`ml-auto font-mono-data text-[12px] px-2 py-0.5 rounded-sm ${
+                  <span className={`ml-auto font-mono-data text-[11px] px-2 py-0.5 rounded-sm ${
                     activeCase.status === "MONITORING"
                       ? "bg-accent/20 text-accent"
                       : "bg-muted text-muted-foreground"
@@ -732,7 +732,7 @@ const PlatformSection = () => {
 
                 {/* Sparkline grid */}
                 <div className="px-5 pt-5 pb-3">
-                  <div className="font-mono-data text-[12px] uppercase tracking-[0.2em] text-muted-foreground mb-3">
+                  <div className="font-mono-data text-[11px] uppercase tracking-[0.2em] text-muted-foreground mb-3">
                     Sensor Array — Live Monitoring
                   </div>
                   <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5">
@@ -746,7 +746,7 @@ const PlatformSection = () => {
                 <div className="grid md:grid-cols-2 border-t border-border/50">
                   {/* Signature hero chart */}
                   <div className="p-5 border-r border-border/50">
-                    <div className="font-mono-data text-[12px] uppercase tracking-[0.2em] text-muted-foreground mb-3">
+                    <div className="font-mono-data text-[11px] uppercase tracking-[0.2em] text-muted-foreground mb-3">
                       {heroChartLabels[activeCase.heroChart]}
                     </div>
                     <div className="h-44">
@@ -757,10 +757,10 @@ const PlatformSection = () => {
                   {/* Timeline chart */}
                   <div className="p-5">
                     <div className="flex items-center justify-between mb-3">
-                      <span className="font-mono-data text-[12px] uppercase tracking-[0.2em] text-muted-foreground">
+                      <span className="font-mono-data text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
                         {activeCase.timelineLabel} — 30 Day Trend
                       </span>
-                      <span className="font-mono-data text-[12px] text-muted-foreground/50">
+                      <span className="font-mono-data text-[11px] text-muted-foreground/50">
                         ─── Threshold
                       </span>
                     </div>
@@ -788,14 +788,14 @@ const PlatformSection = () => {
                 <div className="grid md:grid-cols-3 border-t border-border/50">
                   {/* Stats */}
                   <div className="p-5 border-r border-border/50">
-                    <div className="font-mono-data text-[12px] uppercase tracking-[0.2em] text-muted-foreground mb-3">
+                    <div className="font-mono-data text-[11px] uppercase tracking-[0.2em] text-muted-foreground mb-3">
                       Key Outcomes
                     </div>
                     <div className="space-y-3">
                       {activeCase.stats.map((stat) => (
                         <div key={stat.label}>
                           <div className="font-heading text-lg text-foreground">{stat.value}</div>
-                          <div className="font-mono-data text-[11px] uppercase tracking-[0.15em] text-muted-foreground">
+                          <div className="font-mono-data text-[10px] uppercase tracking-[0.15em] text-muted-foreground">
                             {stat.label}
                           </div>
                         </div>
@@ -805,17 +805,17 @@ const PlatformSection = () => {
 
                   {/* Risk */}
                   <div className="p-5 border-r border-border/50">
-                    <div className="font-mono-data text-[12px] uppercase tracking-[0.2em] text-muted-foreground mb-3">
+                    <div className="font-mono-data text-[11px] uppercase tracking-[0.2em] text-muted-foreground mb-3">
                       Risk Assessment
                     </div>
                     <RiskBar before={activeCase.riskBefore} after={activeCase.riskAfter} color={activeCase.color} />
                     <div className="mt-4">
-                      <div className="font-mono-data text-[12px] uppercase tracking-[0.2em] text-muted-foreground mb-2">
+                      <div className="font-mono-data text-[11px] uppercase tracking-[0.2em] text-muted-foreground mb-2">
                         Disciplines
                       </div>
                       <div className="flex flex-wrap gap-1">
                         {activeCase.disciplines.map((d) => (
-                          <span key={d} className="font-mono-data text-[11px] px-1.5 py-0.5 border border-border text-muted-foreground">
+                          <span key={d} className="font-mono-data text-[10px] px-1.5 py-0.5 border border-border text-muted-foreground">
                             {d}
                           </span>
                         ))}
@@ -826,17 +826,17 @@ const PlatformSection = () => {
                   {/* Footer */}
                   <div className="p-5 flex flex-col justify-between">
                     <div>
-                      <div className="font-mono-data text-[12px] uppercase tracking-[0.2em] text-muted-foreground mb-2">
+                      <div className="font-mono-data text-[11px] uppercase tracking-[0.2em] text-muted-foreground mb-2">
                         Case ID
                       </div>
                       <div className="font-heading text-3xl text-foreground/15">
                         {String(activeIndex + 1).padStart(2, "0")}
-                        <span className="font-mono-data text-[12px] text-muted-foreground ml-1">/07</span>
+                        <span className="font-mono-data text-[11px] text-muted-foreground ml-1">/07</span>
                       </div>
                     </div>
                     <Link
                       to="/case-studies"
-                      className="inline-flex items-center gap-1.5 font-mono-data text-[11px] uppercase tracking-[0.15em] hover:text-accent transition-colors group mt-4"
+                      className="inline-flex items-center gap-1.5 font-mono-data text-[10px] uppercase tracking-[0.15em] hover:text-accent transition-colors group mt-4"
                       style={{ color: activeCase.color }}
                     >
                       Full Report
