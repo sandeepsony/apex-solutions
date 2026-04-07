@@ -6,34 +6,34 @@ const testimonials = [
   {
     quote:
       "Within 24 hours, at a fraction of the equivalent cost, NovaActa executed analysis that revealed insights our team had missed despite weeks of review.",
-    name: "Dr. James Whitfield",
-    title: "VP Engineering",
-    org: "Meridian Energy Partners",
-    orgAbbr: "MEP",
+    name: "Director of Public Works",
+    title: "Infrastructure Division",
+    org: "City of Houston",
+    orgAbbr: "COH",
   },
   {
     quote:
       "They replicated the work of two engineering teams over three months in a single overnight run. The physics-informed approach made all the difference.",
-    name: "Sarah Chen",
-    title: "Chief Technology Officer",
-    org: "Pacific Infrastructure Group",
-    orgAbbr: "PIG",
+    name: "Senior Bridge Engineer",
+    title: "Transportation Department",
+    org: "Port Authority of NY & NJ",
+    orgAbbr: "PANYNJ",
   },
   {
     quote:
       "Think of NovaActa as that breakthrough insight you usually wait quarters for — only this time, it shows up instantly, and validates itself on the spot.",
-    name: "Prof. Ricardo Vasquez",
-    title: "Director of Research",
-    org: "Global Turbine Alliance",
-    orgAbbr: "GTA",
+    name: "Chief Resilience Officer",
+    title: "Office of Sustainability",
+    org: "City of Miami-Dade",
+    orgAbbr: "CMD",
   },
   {
     quote:
       "Their team of PhDs didn't just find the anomaly — they explained the thermodynamic mechanism behind it. That's something no other consultancy has done for us.",
-    name: "Elena Marsh",
-    title: "Head of Asset Integrity",
-    org: "Northwind Offshore",
-    orgAbbr: "NWO",
+    name: "Asset Integrity Manager",
+    title: "Water & Sewer Authority",
+    org: "DC Water",
+    orgAbbr: "DCW",
   },
 ];
 
