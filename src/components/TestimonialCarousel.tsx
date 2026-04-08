@@ -5,35 +5,35 @@ import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 const testimonials = [
   {
     quote:
-      "Within 24 hours, at a fraction of the equivalent cost, NovaActa executed analysis that revealed insights our team had missed despite weeks of review.",
-    name: "Director of Public Works",
-    title: "Infrastructure Division",
-    org: "City of Houston",
-    orgAbbr: "COH",
+      "They identified a fatigue-driven crack propagation pattern our inspection team had classified as cosmetic. Their cascade failure model prevented what could have been a catastrophic shutdown.",
+    name: "Senior Operations Manager",
+    title: "Offshore Energy Operator",
+    org: "Offshore Energy Operator",
+    orgAbbr: "OEO",
   },
   {
     quote:
-      "They replicated the work of two engineering teams over three months in a single overnight run. The physics-informed approach made all the difference.",
-    name: "Senior Bridge Engineer",
-    title: "Transportation Department",
-    org: "Port Authority of NY & NJ",
-    orgAbbr: "PANYNJ",
+      "We were days from approving a $12M structural retrofit. NovaActa's thermal-mechanical analysis proved the deflection was environmentally induced — not structural. That single finding changed everything.",
+    name: "Director of Infrastructure",
+    title: "State Transportation Authority",
+    org: "State DOT",
+    orgAbbr: "DOT",
   },
   {
     quote:
-      "Think of NovaActa as that breakthrough insight you usually wait quarters for — only this time, it shows up instantly, and validates itself on the spot.",
-    name: "Chief Resilience Officer",
-    title: "Office of Sustainability",
-    org: "City of Miami-Dade",
-    orgAbbr: "CMD",
+      "Standard energy audits kept pointing to equipment age. Their first-principles simulation traced the loss to a heat integration bottleneck no one had modeled before. We recovered 18% efficiency in one quarter.",
+    name: "Plant Reliability Engineer",
+    title: "Gulf Coast Refinery",
+    org: "Gulf Coast Refinery",
+    orgAbbr: "GCR",
   },
   {
     quote:
-      "Their team of PhDs didn't just find the anomaly — they explained the thermodynamic mechanism behind it. That's something no other consultancy has done for us.",
-    name: "Asset Integrity Manager",
-    title: "Water & Sewer Authority",
-    org: "DC Water",
-    orgAbbr: "DCW",
+      "Our biological nutrient removal was failing intermittently with no clear pattern. Their biochemical kinetics model pinpointed a dissolved oxygen stratification issue — we've been in full compliance ever since.",
+    name: "Chief of Operations",
+    title: "Municipal Water Utility",
+    org: "Municipal Water Utility",
+    orgAbbr: "MWU",
   },
 ];
 
