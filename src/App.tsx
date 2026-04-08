@@ -7,6 +7,7 @@ import { TimeThemeProvider } from "@/hooks/useTimeTheme";
 import Index from "./pages/Index";
 import Platform from "./pages/Platform";
 import CaseStudies from "./pages/CaseStudies";
+import WhatWeDo from "./pages/WhatWeDo";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
