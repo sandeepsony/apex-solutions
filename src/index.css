@@ -149,3 +149,12 @@ html {
 ::-webkit-scrollbar-thumb {
   background: hsl(var(--muted-foreground) / 0.3);
 }
+
+/* Hide scrollbar for horizontal scroll strips */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

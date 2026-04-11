@@ -359,8 +359,8 @@ const WhatWeDo = () => {
         <div className="relative">
           <div
             ref={dataScrollRef}
-            className="flex gap-5 overflow-x-auto pb-6 px-6 md:px-12 lg:px-16 snap-x snap-mandatory scrollbar-hide"
-            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+            className="flex gap-5 overflow-x-auto pb-6 px-6 md:px-12 lg:px-16 snap-x snap-mandatory"
+            style={{ scrollbarWidth: "none", msOverflowStyle: "none", WebkitOverflowScrolling: "touch" }}
           >
             {dataCapabilities.map((cap, i) => (
               <motion.div
@@ -369,7 +369,7 @@ const WhatWeDo = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: i * 0.1 }}
-                className="group relative min-w-[320px] md:min-w-[380px] bg-background border border-border/50 rounded-sm p-8 snap-start
+                className="group relative min-w-[75vw] sm:min-w-[50vw] md:min-w-[420px] lg:min-w-[400px] bg-background border border-border/50 rounded-sm p-8 snap-start
                   hover:border-accent/30 hover:shadow-[0_0_40px_-12px_hsl(var(--accent)/0.15)]
                   transition-all duration-500 flex-shrink-0"
               >
